@@ -1,0 +1,143 @@
+---
+title: "Homework 8"
+author: "Yuanyou Yao"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+## Problem 1
+
+
+
+```{r}
+x=c(rep(0,10),rep(1,10))
+z=c(rep(1,5),rep(0,5),rep(1,5),rep(0,5))
+y=c(8,7,6,6,3,4,7,2,3,4,9,9,8,14,8,13,11,5,7,6)
+summary(glm(y~x+z,family = poisson(link='log')))$coefficients
+```
+The effect of treatment type is significant and it is about $e^{0.59} = 1.80$ times in treatment B as in treatment A when fixing thickness of coating.
+
+However, thickness of coating does not have a significant effect on imperfection rates.
+
+
+
+
+
+
+
+
+
+
+
+## Problem 2
+\subparagraph{(a)}
+```{r}
+Temp=c(66,70,69,68,67,72,73,70,57,63,70,78,67,53,67,75,70,81,76,79,75,76,76)
+TD=c(0,1,0,0,0,0,0,0,1,1,1,0,0,1,0,0,0,0,0,0,1,0,0)
+summary(glm(TD~Temp,family = binomial(link = 'logit')))$coefficients
+```
+The coefficient of temperature is negative, which means probability of primary O-ring suﬀered thermal distress decreases when temperature goes up.
+\subparagraph{(b)}
+\[\frac{exp(-0.22 * 31 + 13.85)}{1 + exp(-0.22 * 31 + 13.85)} = 0.999.\]
+\subparagraph{(c)}
+\[Temp = \frac{ 13.85}{0.22} = 64.15\]
+It is asking the derivative of $\pi(x)$ and the result is $0.25\hat{\beta} = -0.05$.
+\subparagraph{(d)}
+The odds ratio is $\hat{\theta} = exp(-0.22) = 0.81$. So the odds of O-ring failure decreases by about $20\%$ when temperature rises 1 degree.
+\subparagraph{(e)}
+```{r}
+library(lmtest)
+lrtest(glm(TD~Temp,family = binomial(link = 'logit')))
+```
+The code above shows that likelihood-ratio test. Wald test is show in (a). According to these two tests, effect of temperature is significant.
+
+
+
+
+
+
+## Problem 3
+\subparagraph{(a)}
+The odds ratio is $\hat{\theta} = exp(0.0532) = 1.055$. So the odds of possessing a credit card is $5.5\%$ higher when income increases by 1 unit.
+\subparagraph{(b)}
+We are going to test $Income = 0$. The test statistics is \[\hat{\beta}/SE = 0.0532/0.0131 = 4.061.\]
+with the p-value $p = 2.442427 *10^{-5}$.
+
+Therefore, the income effect is significant.
+\subparagraph{(c)}
+$CI = \hat{\beta} \pm z_{\alpha/2}SE = 0.0532 \pm 1.96 * 0.0131 = (0.0275, 0.0789)$.
+
+
+
+
+
+
+
+## Problem 4
+\subparagraph{(a)}
+```{r}
+age=c(12,15,42,52,59,73,82,91,96,105,114,120,121,128,130,139,139,157,1,1,2,8,11,18,22,31,37,61,72,81,97,112,118,127,131,140,151,159,177,206)
+kyphosis= c(rep(1,18),rep(0,22))
+summary(glm(kyphosis~age,family = binomial(link = 'logit')))$coefficients
+```
+Non-significance of the effect of age.
+\subparagraph{(b)}
+The plot is below:
+\newline
+```{r}
+plot(kyphosis~age)
+```
+The kyphosis-absent group shows a wider spread in ages than the kyphosis-present group.
+\subparagraph{(c)}
+```{r}
+agesq=age^2
+summary(glm(kyphosis~age+agesq,family = binomial(link = 'logit')))$coefficients
+plot(kyphosis~age)
+points(cbind(age,glm(kyphosis~age+agesq,family = binomial(link = 'logit'))$fitted.values)[order(cbind(age,glm(kyphosis~age+agesq,family = binomial(link = 'logit'))$fitted.values)[,1]),],type = 'l')
+```
+All parameters are significant. The new model seems fit better than previous one.
+
+
+
+
+## Problem 5
+\subparagraph{(a)}
+```{r include=FALSE}
+b=read.table('HorseshoeCrabs.txt',header = T)
+a=glm(b$y~b$weight,family = binomial(link = "logit"))
+```
+The logistic model is \[logit(\hat{\pi}) = -3.6947264 + 0.0018151 * weight.\]
+\subparagraph{(b)}
+$\hat{\pi}$ at the weight values 1.20kg: $logit(\hat{\pi}) = -3.6947264 + 0.0018151 * 1200 = -1.52.$
+
+$\hat{\pi}$ at the weight values 2.44kg: $logit(\hat{\pi}) = -3.6947264 + 0.0018151 * 2440 = 0.73.$
+
+$\hat{\pi}$ at the weight values 5.20kg: $logit(\hat{\pi}) = -3.6947264 + 0.0018151 * 5200 = 5.74.$
+
+So $\hat{\pi}$ are 0.18, 0.68 and 1.00 respectively.
+\subparagraph{(c)}
+$El_{50}  =  3.6947/0.0018151 = 2040$.
+\subparagraph{(d)}
+\begin{enumerate}
+\item[i]$0.25\hat{\beta}*1000 = 0.45$.
+\item[ii]$0.25\hat{\beta}*100 = 0.045$.
+\item[iii]$0.25\hat{\beta}*580 = 0.26$.
+\end{enumerate}
+\subparagraph{(e)}
+```{r}
+library(MASS)
+exp(confint.default(object = a,parm='b$weight')*1000)
+```
+So an increase of 1 kg in weight is associated with increasing the odds of a satellite by a multiplicative factor between about 3 and 13.
+\subparagraph{(f)}
+```{r}
+lrtest(a)
+```
+The likelihhod ratio test reports p-value is $4.273 * 10^{-8}$, which is really small. Therefore we reject the null hypothesis and conclude that weight has highly significant effect. Heavier crabs are significantly associated with increased probability of having a satellite.

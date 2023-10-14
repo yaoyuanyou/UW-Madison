@@ -1,0 +1,105 @@
+---
+title: "Homework 9"
+author: "Yuanyou Yao"
+date: "2020/4/23"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+\paragraph{Problem 1}
+\subparagraph{(a)}
+The parameter of defendant's is negative while the parameter of victim's is positive. Therefore we can conclude that black defendants for killing white victims are more likely to have the "yes".\\
+\newline
+The probability is \[\hat{\pi} = \mbox{exp}(-3.60 + 2.40) = 0.23.\]
+\subparagraph{(b)}
+The parameter for victim's race means that the conditional log-odds ratio of receiving the death penalty for white against black victims is 2.40. The conditional odds ratio is $\mbox{exp}(2.40) = 11.07,$ meaning that conditioning on defendant race, the odds of receiving the death penalty are 11 times highter in white victims group.
+\subparagraph{(c)}
+\[(\mbox{exp}(1.3068), \mbox{exp}(3.7175)) = (3.69, 41.16).\]
+\subparagraph{(d)}
+As the output shown in the table, the likelihood ratio test statistic is 20.35, associating with the p-value $p < .0001$. So we reject the null hypothesis that victims' race is independent to death penalty.
+\paragraph{Problem 2}
+\subparagraph{(a)}
+
+
+
+```{r}
+Success=c(11,10,16,22,14,7,2,1,6,0,1,0,1,1,4,6)
+Failure=c(25,27,4,10,5,12,14,16,11,12,10,10,4,8,2,1)
+Treatment=rep(c(1,0),8)
+Center2=c(0,0,1,1,rep(0,12))
+Center3=c(rep(0,4),1,1,rep(0,10))
+Center4=c(rep(0,6),1,1,rep(0,8))
+Center5=c(rep(0,8),1,1,rep(0,6))
+Center6=c(rep(0,10),1,1,rep(0,4))
+Center7=c(rep(0,12),1,1,rep(0,2))
+Center8=c(rep(0,14),1,1)
+Center=cbind(Center2,Center3,Center4,Center5,Center6,Center7,Center8)
+summary(glm(cbind(Success,Failure)~Treatment+Center,family = binomial(link = 'logit')))
+```
+We notice that the probablity of success vary from center to center. The odds ratios of success between drug and control are held fixed within each center.
+\subparagraph{(b)}
+The reason is that we want to fit the data without the treatment variable and compare. The chi-square statistic is $90.96 - 9.7463 = 81.2137$ on 7 d.f. This is significant and indicating that treatment center having an association with the probability of success.
+\paragraph{Problem 3}
+\subparagraph{(a)}
+Conditional on religious affiliation and political party affiliation, the odds of female are exp$(0.16) = 1.17$ times higher than that of male.
+\subparagraph{(b)}
+\[log(\hat{\pi}_1) = -0.11 + 0 - 0.66 - 1.67= -2.44,\]
+\[\hat{\pi}_1 = \frac{\mbox{exp}(-2.44)}{1 + \mbox{exp}(-2.44)} = 0.08,\]
+\[log(\hat{\pi}_{2}) = -0.11 + 0.16 +0 + 0.84= 0.89,\]
+\[\hat{\pi}_{2} = \frac{\mbox{exp}(0.89)}{1 + \mbox{exp}(0.89)} = 0.71.\]
+\subparagraph{(c)}
+Since the differences between categorical variable doesn't change, we obtain $\hat{\beta}^G_1 = 0$ and $\hat{\beta}^G_2 = -0.16$.\\
+\newline
+According to (a), the odds of a male supports laws legalizing abortion are 1/1.17 = 0.85 times the odds of female.
+\subparagraph{(d)}
+Since the differences between categorical variable doesn't change, we obtain $\hat{\beta}^G_1 = 0.08$ and $\hat{\beta}^G_2 = -0.08$.\\
+\newline
+The odds ratio are still the same.
+\paragraph{Problem 4}
+\subparagraph{(a)}
+When $R = 1$ and $R = 0$, the prediction equations are \[log(\frac{\hat{\pi}}{1 - \hat{\pi}}) = -6.70 + 0.10 \times \mbox{Alcohol} + 1.40\times\mbox{Smoking},\]
+\[log(\frac{\hat{\pi}}{1 - \hat{\pi}}) = -7.00 + 0.10\times\mbox{Alcohol} +1.20\times\mbox{Smoking},\]
+respectively.\\
+\newline
+Thus, the conditional $YS$ odds ratio are $\mbox{exp(1.40)} = 4.05$ and $\mbox{exp(1.20)} = 3.32$ respectively.\\
+\newline
+Similarly, when $S = 1$ and $S = 0$, the prediction equations are \[log(\frac{\hat{\pi}}{1 - \hat{\pi}}) = -5.80 + 0.10 \times \mbox{Alcohol} + 0.50\times\mbox{Race},\]
+\[log(\frac{\hat{\pi}}{1 - \hat{\pi}}) = -7.00 + 0.10\times\mbox{Alcohol} + 0.30\times\mbox{Race},\]
+respectively.\\
+\newline
+Thus, the conditional $YR$ odds ratio are $\mbox{exp(0.50)} = 1.65$ and $\mbox{exp(0.30)} = 1.35$ respectively.\\
+\subparagraph{(b)}
+The coefficient of R represents the log odds ratio of cancer for black non-smokers against white non-smoker. The coefficient of S represents the log odds ratio of cancer for white smokers against white non-smokers.\\
+\newline
+The hypothesis for R is that race has no association with cancer. The hypothesis for S is that smoking has no association with cancer.
+\subparagraph{(c)}
+The difference between the effect of A for blacks and for whites is \[0.04-0 = 0.04,\]
+this means that the effect of will increase 0.04 comparing with whites.
+\paragraph{Problem 5}
+\subparagraph{(a)}
+```{r}
+d=c(45,15,40,83,90,25,35,65,95,35,75,45,50,75,30,25,20,60,70,30,60,61,65,15,20,45,15,25,15,30,40,15,135,20,40)
+t=c(0,0,0,1,1,1,0,0,0,0,0,1,1,1,0,0,1,1,1,0,0,0,0,1,1,0,1,0,1,0,0,1,1,1,1)
+y=c(0,0,1,1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,1,1,1,0,1,0,0,1,0,1,0,1,1,0,1,0,0)
+summary(glm(y~t+d,family = binomial(link = 'logit')))
+```
+The odds of sore throat increase $\mbox{exp}(0.06868) = 1.07$ times for surgery duration increasing. As for T, the odds of sore threat decrease to $\mbox{exp}(-1.67895) = 0.19$.
+\subparagraph{(b)}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(lmtest)
+lrtest(lm(y~t+d,family = binomial(link = 'logit')),lm(y~t,family = binomial(link = 'logit')))
+```
+As the result shows, the p-value is 0.0004539. So we have to reject the reduced model.
+\subparagraph{(c)}
+The prediction equations are \[\mbox{logit}(\hat{\pi}) = -4.42 + 0.10d,\]
+\[\mbox{logit}(\hat{\pi}) = 0.05 + 0.03d,\]
+respectively.\\
+\newline
+For (i), odds of sore throat are $\mbox{exp}(0.10) = 1.11$ times when surgery time increases. For (ii), laryngeal mask increases by 3$\%$. Therefore, odds of sore throat increase 8$\%$ more in tracheal tube comparing to laryngeal mask.
+\subparagraph{(d)}
+```{r message=FALSE, warning=FALSE}
+lrtest(lm(y~t+d,family = binomial(link = 'logit')),lm(y~t*d,family = binomial(link = 'logit')))
+```
+The result tells us that we cannot reject the null hypothesis. So the model without interaction fits well.
