@@ -1,3 +1,0 @@
-role,NetID,FamilyName,GivenName
-boss,zwang2547,Wang,Zihang
-employee,yyao93,Yao,Yuanyou
