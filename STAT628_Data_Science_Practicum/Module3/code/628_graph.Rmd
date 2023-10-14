@@ -1,0 +1,34 @@
+---
+title: "628_graph"
+author: Haoran
+output: html_document
+---
+
+```{r}
+review<-read.csv("reviews_clean.csv")
+word=c('room','service','time','car',
+           'desk','staff','place','bed',"manager","food","breakfast",
+           "clean","airport","door","floor","bathroom","shower","coffee",
+           "pool","towel"
+           )
+loc=lapply(word,function(x){grep(x,review$text,ignore.case=TRUE)})
+names(loc)=word
+M=matrix(nrow=5)
+for(i in 1:length(loc)){
+  M=cbind(M,table(review$stars[loc[[i]]]))
+}
+M=M[,-1]
+colnames(M)<-word
+M=M/as.integer(unname(table(review$stars)))
+
+par(mfrow=c(2,3))
+for(i in 1:6) barplot(M[,i],col = "lightskyblue",main=names(loc)[i])
+par(mfrow=c(2,3))
+for(i in 7:12) barplot(M[,i],col = "lightskyblue",main=names(loc)[i])
+par(mfrow=c(2,3))
+for(i in 13:18) barplot(M[,i],col = "lightskyblue",main=names(loc)[i])
+par(mfrow=c(2,3))
+for(i in 18:20) barplot(M[,i],col = "lightskyblue",main=names(loc)[i])
+
+```
+

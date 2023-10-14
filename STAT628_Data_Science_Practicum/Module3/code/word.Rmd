@@ -1,0 +1,55 @@
+---
+title: "STAT628 word"
+author: "Zhihao ZHAO"
+output: word_document
+---
+
+```{r}
+setwd("C:/Users/THINKPAD/Desktop/myUW/STAT628 Data Science Practicum/HW3/Data")
+
+library(dplyr)
+library(tidytext)
+library(tidyr)
+library(ggplot2)
+library(reshape2)
+library(wordcloud)
+library(tm)       #a text mining package used in the process of generating word clouds
+library(stringr)
+```
+
+## read data
+
+```{r}
+hotel = read.csv("business_clean.csv")
+reviews = read.csv("reviews_clean.csv")
+```
+
+
+
+```{r}
+#case1:
+  wordcloud_reviews <- reviews %>% filter(stars<=2) %>% select(business_id,stars,text)
+#case2:
+  wordcloud_reviews <- reviews %>% filter(stars>=4) %>% select(business_id,stars,text)
+  
+  docs <- Corpus(VectorSource(wordcloud_reviews$text)) 
+  #Converting to lower case, removing stopwords, punctuation and numbers
+  docs <- tm_map(docs, removePunctuation)    
+  docs <- tm_map(docs, removeNumbers)
+  docs <- tm_map(docs, tolower)   
+  docs <- tm_map(docs, removeWords, c(stopwords("english"),"s","ve"))  
+  #Term Document Matrix
+  Ngrams <- function(x) NGramTokenizer(x, Weka_control(min = 2, max = 3))
+  tdm <- TermDocumentMatrix(docs, control = list(tokenize = Ngrams))
+  freq = sort(rowSums(as.matrix(tdm)),decreasing = TRUE)
+  freq.df = data.frame(word=names(freq), freq=freq,proportion=freq/nrow(reviews))
+#write.csv(freq.df,"star2.5.csv",row.names=F)
+
+  wordcloud(freq.df$word,freq.df$freq,min.freq=5,max.words=150,random.order = F, colors=brewer.pal(8, "Dark2"))
+
+```
+
+
+
+
+

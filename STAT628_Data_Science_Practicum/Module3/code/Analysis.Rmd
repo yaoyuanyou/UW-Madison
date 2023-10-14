@@ -1,0 +1,108 @@
+---
+title: "Analysis"
+author: "Zhihao ZHAO"
+output: word_document
+---
+
+```{r}
+setwd("C:/Users/THINKPAD/Desktop/myUW/STAT628 Data Science Practicum/HW3/Data")
+
+hotel = read.csv("business_clean.csv")
+
+mean(hotel$stars); sd(hotel$stars)
+hist(hotel$stars,main="histogram of hotel stars", xlab="stars")
+
+summary(hotel)
+```
+
+
+```{r}
+## City
+city<-list()
+city<-c(city,list(hotel$stars[which(hotel$city=="Pittsburgh")]))
+city<-c(city,list(hotel$stars[which(hotel$city=="Cleveland")]))
+city<-c(city,list(hotel$stars[which(hotel$city=="Madison")]))
+names(city)<-c("Pittsburgh","Cleveland","Madison")
+boxplot(city)
+
+city.new<-hotel[which(hotel$city %in% c("Pittsburgh","Cleveland","Madison")),]
+fit<-aov(stars~city,data=city.new,na.rm=T)
+summary(fit,warnings=F)# no significant difference
+TukeyHSD(fit)
+
+lapply(city,mean)
+lapply(city,sd)
+
+
+##Noise level
+hotel$attribute.NoiseLevel<-gsub("u'","'",hotel$attribute.NoiseLevel,fixed=T)#standardize noise level 
+hotel$attribute.NoiseLevel<-as.factor(hotel$attribute.NoiseLevel)
+summary(hotel$attribute.NoiseLevel)
+
+noise<-list()
+for( i in levels(hotel$attribute.NoiseLevel))
+   noise<-c(noise,list(hotel$stars[which(hotel$attribute.NoiseLevel==i)]))
+names(noise)<-levels(hotel$attribute.NoiseLevel)
+boxplot(noise)# only 6 'loud', ez to be affected by extreme values, which may influenced by other factors
+
+ave<-c()
+for( i in levels(hotel$attribute.NoiseLevel))
+    ave=c(ave,mean(hotel$stars[which(hotel$attribute.NoiseLevel==i)]))
+ave
+
+med<-c()
+for( i in levels(hotel$attribute.NoiseLevel))
+    med=c(med,median(hotel$stars[which(hotel$attribute.NoiseLevel==i)]))
+med
+
+hotel[which(hotel$attribute.NoiseLevel==levels(hotel$attribute.NoiseLevel)[2]),]
+```
+
+
+
+
+```{r}
+##Business Parking
+summary(hotel$attribute.BusinessParking)#only compare whether lot=True, since other categories only have <5 feedback
+
+ave<-c()
+for( i in levels(hotel$attribute.BusinessParking)[1:2])
+    ave=c(ave,mean(hotel$stars[which(hotel$attribute.BusinessParking==i)]))
+ave
+
+stars_nolot=hotel$stars[which(hotel$attribute.BusinessParking==levels(hotel$attribute.BusinessParking)[1])]
+stars_lot=hotel$stars[which(hotel$attribute.BusinessParking==levels(hotel$attribute.BusinessParking)[2])]
+t.test(stars_nolot,stars_lot)# no significant difference
+
+## Wifi
+summary(hotel$attribute.WiFi)
+hotel$attribute.WiFi<-gsub("u'","'",hotel$attribute.WiFi,fixed=T)#standardize noise level 
+hotel$attribute.WiFi<-as.factor(hotel$attribute.WiFi)
+summary(hotel$attribute.WiFi)
+
+fit<-aov(stars~attribute.WiFi,data=hotel,na.rm=T)
+summary(fit,warnings=F)# no significant difference
+TukeyHSD(fit)
+
+## Credit Cards
+stars_card=hotel$stars[which(hotel$attribute.BusinessAcceptsCreditCards=="True")]
+stars_nocard=hotel$stars[which(hotel$attribute.BusinessAcceptsCreditCards=="False")]
+t.test(stars_card,stars_nocard)# no significant difference
+
+## TV
+stars_tv=hotel$stars[which(hotel$attribute.HasTV=="True")]
+stars_notv=hotel$stars[which(hotel$attribute.HasTV=="False")]
+t.test(stars_tv,stars_notv)# significant difference, should not provide TV, maybe it's biased, only 6 no TV, 81 TV
+
+## Good for kids
+stars_kids=hotel$stars[which(hotel$attribute.GoodForKids=="True")]
+stars_nokids=hotel$stars[which(hotel$attribute.GoodForKids=="False")]
+t.test(stars_kids,stars_nokids)# no significant difference
+
+##Dogs
+stars_dogs=hotel$stars[which(hotel$attribute.DogsAllowed=="True")]
+stars_nodogs=hotel$stars[which(hotel$attribute.DogsAllowed=="False")]
+t.test(stars_dogs,stars_nodogs)# no significant difference
+
+```
+
