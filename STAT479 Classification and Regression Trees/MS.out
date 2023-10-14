@@ -1,0 +1,437 @@
+             GGG   U   U  I  DDDD   EEEE
+            G   G  U   U  I  D   D  E
+            G      U   U  I  D   D  E
+            G  GG  U   U  I  D   D  EEE
+            G   G  U   U  I  D   D  E
+            G   G  U   U  I  D   D  E
+             GGG    UUU   I  DDDD   EEEE
+   
+ GUIDE Classification and Regression Trees and Forests
+ Version 32.0 (Build date: August 29, 2019)        
+ Compiled with Visual Fortran 64 18.0.1.156 on Windows 10              
+ Copyright (c) 1997-2019 Wei-Yin Loh. All rights reserved.
+ This software is based upon work supported by the U.S. Army Research Office,
+ the National Science Foundation and the National Institutes of Health.
+  
+ This job was started on 10/31/19 at 17:37
+  
+ Classification tree
+ Pruning by cross-validation
+ Data description file: desc.txt
+ Training sample file: model.txt
+ Missing value code: NA
+ Records in data file start on line 2
+ Warning: N variables changed to S
+ Warning: B variables changed to C
+ Dependent variable is INTP_
+ Number of records in data file: 24038
+ Length of longest entry in data file: 13
+ Missing values found among categorical variables
+ Separate categories will be created for missing categorical variables
+ Number of classes: 2
+ Smallest and largest positive weights are  2.0000E+00 1.0510E+03
+ Training sample class proportions of D variable INTP_:
+ Class  #Cases     Proportion
+ 0        3800     0.15808304
+ 1       20238     0.84191696
+  
+ Summary information for training sample of size 24038
+ d=dependent, b=split and fit cat variable using indicator variables,
+ c=split-only categorical, i=fit-only categorical (via indicators),
+ s=split-only numerical, n=split and fit numerical, f=fit-only numerical,
+ m=missing-value flag variable, p=periodic variable, w=weight,
+                                                  #Codes/           
+                                                  Levels/           
+  Column  Name            Minimum      Maximum    Periods   #Missing
+       9  PWGTP      w    2.000        1051.    
+      10  AGEP       s    15.00        93.00                    298
+      11  CIT        c                                  5      1149
+      12  CITWP      s    1939.        2017.                  23823
+      13  COW        c                                  9     10794
+      14  DDRS       c                                  2      1727
+      15  DEAR       c                                  2      1332
+      16  DEYE       c                                  2      1412
+      17  DOUT       c                                  2      1717
+      18  DPHY       c                                  2      1717
+      19  DRAT       c                                  6     23534
+      20  DRATX      c                                  2     21748
+      21  DREM       c                                  2      1695
+      22  ENG        c                                  4     23186
+      23  FER        c                                  2     18164
+      24  GCL        c                                  2      5874
+      25  GCM        c                                  5     23696
+      26  GCR        c                                  2     23289
+      27  HINS1      c                                  2      2811
+      28  HINS2      c                                  2      2930
+      29  HINS3      c                                  2      2063
+      30  HINS4      c                                  2      3248
+      31  HINS5      c                                  2      3314
+      32  HINS6      c                                  2      3304
+      33  HINS7      c                                  2      3564
+      35  JWMNP      s    1.000        160.0                  14323
+      36  JWRIP      s    1.000        10.00                  14369
+      37  JWTR       c                                  9     13554
+      38  LANX       c                                  2      1542
+      39  MAR        c                                  5      1173
+      40  MARHD      c                                  2      8781
+      41  MARHM      c                                  2      8589
+      42  MARHT      c                                  3      8835
+      43  MARHW      c                                  2      8793
+      44  MARHYP     s    1940.        2017.                   9791
+      45  MIG        c                                  3
+      46  MIL        c                                  4      2548
+      47  MLPA       c                                  2     22089
+      48  MLPB       c                                  2     22089
+      49  MLPCD      c                                  2     22089
+      50  MLPE       c                                  2     22089
+      51  MLPFG      c                                  2     22089
+      52  MLPH       c                                  2     22089
+      53  MLPI       c                                  2     22089
+      54  MLPJ       c                                  2     22089
+      55  MLPK       c                                  1     22089
+      56  NWAB       c                                  3       395
+      57  NWAV       c                                  4       395
+      58  NWLA       c                                  3       395
+      59  NWLK       c                                  3       395
+      60  NWRE       c                                  3       395
+      61  OIP        s    0.000       0.6400E+05               3310
+      62  PAP        s    0.000       0.3000E+05               3330
+      63  RELP       c                                 18       295
+      64  RETP       s    0.000       0.9400E+05               3527
+      65  SCH        c                                  3      1439
+      66  SCHG       c                                  9     21070
+      67  SCHL       c                                 24      1782
+      68  SEMP       s   -6900.       0.2390E+06               2787
+      69  SEX        c                                  2        33
+      70  SSIP       s    0.000       0.3000E+05               3260
+      71  SSP        s    0.000       0.5000E+05               3866
+      72  WAGP       s    0.000       0.3090E+06               4519
+      73  WKHP       s    1.000        99.00                  12489
+      74  WKL        c                                  3      2968
+      75  WKW        c                                  6     12336
+      76  WRK        c                                  2      3086
+      77  YOEP       s    1926.        2017.                  23401
+      78  ANC        c                                  4
+      79  ANC1P      c                                147
+      80  ANC2P      c                                 96
+      81  DECADE     c                                  8     23296
+      82  DIS        c                                  2      2197
+      83  DRIVESP    c                                  6     13178
+      84  ESP        c                                  8     22984
+      85  ESR        c                                  6      2595
+      86  FOD1P      c                                161     19178
+      87  FOD2P      c                                 92     23651
+      88  HICOV      c                                  2      4003
+      89  HISP       c                                 18       957
+      90  INDP       c                                257     10841
+      91  JWAP       p    1.000        284.0          286     12779
+      92  JWDP       p    1.000        150.0          151     14894
+      93  LANP       c                                 48     23279
+      94  MIGPUMA    c                                 88     21266
+      95  MIGSP      c                                 58     21468
+      96  MSP        c                                  6
+      97  NATIVITY   c                                  2
+      98  NOP        c                                  8     22984
+      99  OC         c                                  2      1618
+     100  OCCP       c                                446     10973
+     101  PAOC       c                                  4     12163
+     102  PERNP      s   -6900.       0.5480E+06               5062
+     103  PINCP      s   -6900.       0.8380E+06               7251
+     104  POBP       c                                139      2398
+     105  POVPIP     s    0.000        501.0                   1449
+     106  POWPUMA    c                                 64     12494
+     107  POWSP      c                                 37     13917
+     108  PRIVCOV    c                                  2      3763
+     109  PUBCOV     c                                  2      3761
+     110  QTRBIR     c                                  4
+     111  RAC1P      c                                  8
+     112  RAC2P      c                                 34
+     113  RAC3P      c                                 48
+     114  RACAIAN    c                                  2
+     115  RACASN     c                                  2
+     116  RACBLK     c                                  2
+     117  RACNH      c                                  2
+     118  RACNUM     c                                  4
+     119  RACPI      c                                  2       218
+     120  RACSOR     c                                  2
+     121  RACWHT     c                                  2
+     122  RC         c                                  2      1618
+     123  SCIENGP    c                                  2     19189
+     124  SCIENGRLP  c                                  2     19178
+     125  SFN        c                                  2     23463
+     126  SFR        c                                  6     23463
+     127  VPS        c                                 14     22089
+     128  WAOB       c                                  8
+     146  FFODP      c                                  2
+     153  FHINS3C    c                                  2     17123
+     155  FHINS4C    c                                  2     19799
+     157  FHINS5C    c                                  2     22787
+     178  FMILPP     c                                  2
+     285  INTP_      d                                  2
+  
+      Total  #cases w/   #missing
+     #cases    miss. D  ord. vals   #X-var   #N-var   #F-var   #S-var
+      24038          0      23972      160        0        0       17
+     #P-var   #M-var   #B-var   #C-var   #I-var
+          2        0        0      104        0
+ No. cases used for training: 24038
+ No. cases excluded due to 0 weight or missing D: 0
+  
+ Univariate split highest priority
+ Interaction and linear splits 2nd and 3rd priorities
+ Pruning by v-fold cross-validation, with v = 10
+ Selected tree is based on mean of CV estimates
+ Number of SE's for pruned tree: .5000
+  
+ Simple node models
+ Estimated priors
+ Unit misclassification costs
+ Warning: All positive weights treated as one
+ Split values for N and S variables based on exhaustive search
+ Maximum number of split levels: 30
+ Minimum node sample size: 120
+ Size and CV mean cost and SE of subtrees:
+  Tree   #Tnodes  Mean Cost   SE(Mean)   BSE(Mean)  Median Cost  BSE(Median)
+    1       39   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+    2       38   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+    3       37   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+    4       34   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+    5       33   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+    6       26   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+    7       25   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+    8       24   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+    9       22   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   10       20   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   11       18   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   12       17   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   13       15   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   14       13   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   15       12   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   16       11   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   17       10   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   18**      9   2.766E-02   1.058E-03   9.317E-04   2.683E-02   1.042E-03
+   19        8   3.008E-02   1.102E-03   1.196E-03   2.891E-02   1.187E-03
+   20        7   3.008E-02   1.102E-03   1.196E-03   2.891E-02   1.187E-03
+   21        2   4.393E-02   1.322E-03   1.210E-03   4.389E-02   9.953E-04
+   22        1   1.581E-01   2.353E-03   2.128E-03   1.573E-01   2.350E-03
+  
+ 0-SE tree based on mean is marked with * and has 9 terminal nodes
+ 0-SE tree based on median is marked with + and has 9 terminal nodes
+ Selected-SE tree based on mean using naive SE is marked with **
+ Selected-SE tree based on mean using bootstrap SE is marked with --
+ Selected-SE tree based on median and bootstrap SE is marked with ++
+ * tree, ** tree, + tree, and ++ tree all the same
+  
+ Following tree is based on mean CV with naive SE estimate (**).
+  
+ Structure of final tree. Each terminal node is marked with a T.
+  
+ Node cost is node misclassification cost divided by number of training cases
+        Node    Total    Train    Predicted        Node    Split          Interacting
+       label    cases    cases    class            cost    variables      variable
+           1    24038    24038    1              1.581E-01 PAP 
+           2     3330     3330    0              8.799E-02 SSP 
+           4T    2978     2978    0              3.257E-02 WKL 
+           5      352      352    1              4.432E-01 RETP 
+          10T     121      121    1              1.736E-01 - 
+          11T     231      231    0              4.156E-01 - 
+           3    20708    20708    1              3.685E-02 PINCP 
+           6     3921     3921    1              1.946E-01 PERNP 
+          12T    2293     2293    1              8.330E-02 SSP 
+          13     1628     1628    1              3.514E-01 SSP 
+          26T     803      803    1              1.544E-01 RETP 
+          27      825      825    0              4.570E-01 RETP 
+          54T     199      199    1              1.055E-01 - 
+          55      626      626    0              3.179E-01 SSIP 
+         110T     137      137    1              1.168E-01 - 
+         111T     489      489    0              1.595E-01 PRIVCOV 
+           7T   16787    16787    1              0.000E+00 - 
+  
+ Number of terminal nodes of final tree: 9
+ Total number of nodes of final tree: 17
+ Second best split variable (based on curvature test) at root node is OIP
+  
+ Classification tree:
+  
+ Node 1: PAP = NA
+   Node 2: SSP = NA
+     Node 4: 0
+   Node 2: SSP /= NA
+     Node 5: RETP <= 1050.0000
+       Node 10: 1
+     Node 5: RETP > 1050.0000 or NA
+       Node 11: 0
+ Node 1: PAP /= NA
+   Node 3: PINCP = NA
+     Node 6: PERNP = NA
+       Node 12: 1
+     Node 6: PERNP /= NA
+       Node 13: SSP = NA
+         Node 26: 1
+       Node 13: SSP /= NA
+         Node 27: RETP = NA
+           Node 54: 1
+         Node 27: RETP /= NA
+           Node 55: SSIP = NA
+             Node 110: 1
+           Node 55: SSIP /= NA
+             Node 111: 0
+   Node 3: PINCP /= NA
+     Node 7: 1
+ 
+ ***************************************************************
+ 
+ In the following the predictor node mean is weighted mean of complete cases.
+  
+Node 1: Intermediate node
+ A case goes into Node 2 if PAP = NA
+ PAP mean = 21.996130
+ Class      Number   Posterior
+ 0            3800     0.15808
+ 1           20238     0.84192
+ Number of training cases misclassified = 3800
+ Predicted class is 1
+ ----------------------------
+Node 2: Intermediate node
+ A case goes into Node 4 if SSP = NA
+ SSP mean = 7490.1109
+ Class      Number   Posterior
+ 0            3037     0.91201
+ 1             293     0.08799
+ Number of training cases misclassified = 293
+ Predicted class is 0
+ ----------------------------
+Node 4: Terminal node
+ Class      Number   Posterior
+ 0            2881     0.96743
+ 1              97     0.03257
+ Number of training cases misclassified = 97
+ Predicted class is 0
+ ----------------------------
+Node 5: Intermediate node
+ A case goes into Node 10 if RETP <= 1050.0000
+ RETP mean = 5391.3474
+ Class      Number   Posterior
+ 0             156     0.44318
+ 1             196     0.55682
+ Number of training cases misclassified = 156
+ Predicted class is 1
+ ----------------------------
+Node 10: Terminal node
+ Class      Number   Posterior
+ 0              21     0.17355
+ 1             100     0.82645
+ Number of training cases misclassified = 21
+ Predicted class is 1
+ ----------------------------
+Node 11: Terminal node
+ Class      Number   Posterior
+ 0             135     0.58442
+ 1              96     0.41558
+ Number of training cases misclassified = 96
+ Predicted class is 0
+ ----------------------------
+Node 3: Intermediate node
+ A case goes into Node 6 if PINCP = NA
+ PINCP mean = 28459.311
+ Class      Number   Posterior
+ 0             763     0.03685
+ 1           19945     0.96315
+ Number of training cases misclassified = 763
+ Predicted class is 1
+ ----------------------------
+Node 6: Intermediate node
+ A case goes into Node 12 if PERNP = NA
+ PERNP mean = 7535.0888
+ Class      Number   Posterior
+ 0             763     0.19459
+ 1            3158     0.80541
+ Number of training cases misclassified = 763
+ Predicted class is 1
+ ----------------------------
+Node 12: Terminal node
+ Class      Number   Posterior
+ 0             191     0.08330
+ 1            2102     0.91670
+ Number of training cases misclassified = 191
+ Predicted class is 1
+ ----------------------------
+Node 13: Intermediate node
+ A case goes into Node 26 if SSP = NA
+ SSP mean = 4966.5869
+ Class      Number   Posterior
+ 0             572     0.35135
+ 1            1056     0.64865
+ Number of training cases misclassified = 572
+ Predicted class is 1
+ ----------------------------
+Node 26: Terminal node
+ Class      Number   Posterior
+ 0             124     0.15442
+ 1             679     0.84558
+ Number of training cases misclassified = 124
+ Predicted class is 1
+ ----------------------------
+Node 27: Intermediate node
+ A case goes into Node 54 if RETP = NA
+ RETP mean = 3506.8726
+ Class      Number   Posterior
+ 0             448     0.54303
+ 1             377     0.45697
+ Number of training cases misclassified = 377
+ Predicted class is 0
+ ----------------------------
+Node 54: Terminal node
+ Class      Number   Posterior
+ 0              21     0.10553
+ 1             178     0.89447
+ Number of training cases misclassified = 21
+ Predicted class is 1
+ ----------------------------
+Node 55: Intermediate node
+ A case goes into Node 110 if SSIP = NA
+ SSIP mean = 306.38262
+ Class      Number   Posterior
+ 0             427     0.68211
+ 1             199     0.31789
+ Number of training cases misclassified = 199
+ Predicted class is 0
+ ----------------------------
+Node 110: Terminal node
+ Class      Number   Posterior
+ 0              16     0.11679
+ 1             121     0.88321
+ Number of training cases misclassified = 16
+ Predicted class is 1
+ ----------------------------
+Node 111: Terminal node
+ Class      Number   Posterior
+ 0             411     0.84049
+ 1              78     0.15951
+ Number of training cases misclassified = 78
+ Predicted class is 0
+ ----------------------------
+Node 7: Terminal node
+ Class      Number   Posterior
+ 0               0     0.00000
+ 1           16787     1.00000
+ Number of training cases misclassified = 0
+ Predicted class is 1
+ ----------------------------
+  
+ 
+ Classification matrix for training sample:
+ Predicted      True class
+ class              0         1
+ 0               3427       271
+ 1                373     19967
+ Total           3800     20238
+ 
+ Number of cases used for tree construction: 24038
+ Number misclassified: 644
+ Resubstitution est. of mean misclassification cost: .26790914E-01
+ 
+ Observed and fitted values are stored in MS.FIT
+ LaTeX code for tree is in MS.tex
+ R code is stored in MS.r
+ Elapsed time in seconds: 216.80

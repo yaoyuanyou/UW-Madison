@@ -1,0 +1,77 @@
+ \documentclass{article}
+ %File creation date: 10/31/19  at 17:41
+ \usepackage{pstricks,pst-node,pst-tree}
+ \usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+ \usepackage{lscape}
+ \definecolor{wheat}{rgb}{0.96, 0.87, 0.7}
+ \pagestyle{empty}
+ \begin{document}
+ %\begin{landscape}
+ \begin{center}
+\psset{linecolor=black,tnsep=1pt,tndepth=0cm,tnheight=0cm,treesep=.8cm,levelsep=56pt,radius=10pt}
+  \pstree[treemode=D]{\Tcircle{ 1 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{PAP}}\\= \texttt{\detokenize{NA}}}}
+    ~[tnpos=r]{\shortstack[r]{0.16\\0.84}}}{
+  \pstree[treemode=D]{\Tcircle{ 2 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{SSP}}\\= \texttt{\detokenize{NA}}}}
+ }{
+ \Tcircle[fillcolor=yellow,fillstyle=solid]{ 4 }
+    ~[tnpos=l]{\shortstack[r]{0.97\\0.03}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{0}}}\\2978}}
+  \pstree[treemode=D]{\Tcircle{ 5 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{RETP}}\\$\leq$1050}}
+ }{
+ \Tcircle[fillcolor=green,fillstyle=solid]{\small 10}
+    ~[tnpos=l]{\shortstack[r]{0.17\\0.83}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{1}}}\\121}}
+ \Tcircle[fillcolor=yellow,fillstyle=solid]{\small 11}
+    ~[tnpos=r]{\shortstack[r]{0.58\\0.42}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{0}}}\\231}}
+   }
+   }
+  \pstree[treemode=D]{\Tcircle{ 3 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{PINCP}}\\= \texttt{\detokenize{NA}}}}
+ }{
+  \pstree[treemode=D]{\Tcircle{ 6 }~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{PERNP}}\\= \texttt{\detokenize{NA}}}}
+ }{
+ \Tcircle[fillcolor=green,fillstyle=solid]{\small 12}
+    ~[tnpos=l]{\shortstack[r]{0.08\\0.92}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{1}}}\\2293}}
+  \pstree[treemode=D]{\Tcircle{\small 13}~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{SSP}}\\= \texttt{\detokenize{NA}}}}
+ }{
+ \Tcircle[fillcolor=green,fillstyle=solid]{\small 26}
+    ~[tnpos=l]{\shortstack[r]{0.15\\0.85}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{1}}}\\803}}
+  \pstree[treemode=D]{\Tcircle{\small 27}~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{RETP}}\\= \texttt{\detokenize{NA}}}}
+ }{
+ \Tcircle[fillcolor=green,fillstyle=solid]{\small 54}
+    ~[tnpos=l]{\shortstack[r]{0.11\\0.89}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{1}}}\\199}}
+  \pstree[treemode=D]{\Tcircle{\small 55}~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{SSIP}}\\= \texttt{\detokenize{NA}}}}
+ }{
+ \Tcircle[fillcolor=green,fillstyle=solid]{\tiny 110}
+    ~[tnpos=l]{\shortstack[r]{0.12\\0.88}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{1}}}\\137}}
+ \Tcircle[fillcolor=yellow,fillstyle=solid]{\tiny 111}
+    ~[tnpos=r]{\shortstack[r]{0.84\\0.16}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{0}}}\\489}}
+   }
+   }
+   }
+   }
+ \Tcircle[fillcolor=green,fillstyle=solid]{ 7 }
+    ~[tnpos=r]{\shortstack[r]{0.00\\1.00}}
+    ~{\shortstack{\makebox[0pt][c]{\texttt{\detokenize{1}}}\\16787}}
+ }
+ }
+ \end{center}
+GUIDE v.32.0  0.50-SE
+classification tree for predicting \texttt{\detokenize{INTP_}} using
+estimated priors
+and unit misclassification costs.
+ Number of observations used to contruct tree is 24038.
+ Maximum number of split levels is 30 and minimum node sample size is 120.
+At each split, an observation goes to the left branch 
+ if and only if the condition is satisfied.
+Predicted classes and sample sizes printed below terminal nodes;
+ class proportions for \texttt{\detokenize{INTP_}} =
+ \texttt{\detokenize{0}} and \texttt{\detokenize{1}} beside nodes.
+Second best split variable at root node is \texttt{\detokenize{OIP}}.
+ %\end{landscape}
+ \end{document}

@@ -1,0 +1,288 @@
+             GGG   U   U  I  DDDD   EEEE
+            G   G  U   U  I  D   D  E
+            G      U   U  I  D   D  E
+            G  GG  U   U  I  D   D  EEE
+            G   G  U   U  I  D   D  E
+            G   G  U   U  I  D   D  E
+             GGG    UUU   I  DDDD   EEEE
+   
+ GUIDE Classification and Regression Trees and Forests
+ Version 32.0 (Build date: August 29, 2019)        
+ Compiled with Visual Fortran 64 18.0.1.156 on Windows 10              
+ Copyright (c) 1997-2019 Wei-Yin Loh. All rights reserved.
+ This software is based upon work supported by the U.S. Army Research Office,
+ the National Science Foundation and the National Institutes of Health.
+  
+ This job was started on 10/31/19 at 22:20
+  
+ Classification tree
+ No pruning
+ Data description file: desc.txt
+ Training sample file: model.txt
+ Missing value code: NA
+ Records in data file start on line 2
+ Warning: N variables changed to S
+ Warning: B variables changed to C
+ Dependent variable is INTP_
+ Number of records in data file: 24038
+ Length of longest entry in data file: 13
+ Missing values found among categorical variables
+ Separate categories will be created for missing categorical variables
+ Number of classes: 2
+ Smallest and largest positive weights are  2.0000E+00 1.0510E+03
+ Training sample class proportions of D variable INTP_:
+ Class  #Cases     Proportion
+ 0        3800     0.15808304
+ 1       20238     0.84191696
+  
+      Total  #cases w/   #missing
+     #cases    miss. D  ord. vals   #X-var   #N-var   #F-var   #S-var
+      24038          0      23972      160        0        0       17
+     #P-var   #M-var   #B-var   #C-var   #I-var
+          2        0        0      104        0
+ No. cases used for training: 24038
+ No. cases excluded due to 0 weight or missing D: 0
+  
+ Importance scoring of variables
+ Univariate split highest priority
+ Interaction splits 2nd priority; no linear splits
+ Fraction of noise variables erroneously identified as important = .01000
+ Simple node models
+ Equal priors
+ Unit misclassification costs
+ Warning: All positive weights treated as one
+ Split values for N and S variables based on exhaustive search
+ Maximum number of split levels: 3
+ Minimum node sample size: 120
+  
+ Note: final tree is shorter due to pruning of sibling nodes with same predicted values.
+ Structure of final tree. Each terminal node is marked with a T.
+  
+ Node cost is node misclassification cost divided by number of training cases
+        Node    Total    Train    Predicted        Node    Split          Interacting
+       label    cases    cases    class            cost    variables      variable
+           1    24038    24038    0              5.000E-01 PAP 
+           2T    3330     3330    0              1.779E-02 SSP 
+           3    20708    20708    1              1.693E-01 PINCP 
+           6     3921     3921    0              4.373E-01 PERNP 
+          12T    2293     2293    1              3.261E-01 SSP 
+          13T    1628     1628    0              2.574E-01 SSP 
+           7T   16787    16787    1              0.000E+00 - 
+  
+ Number of terminal nodes of final tree: 4
+ Total number of nodes of final tree: 7
+ Second best split variable (based on curvature test) at root node is OIP
+  
+ Classification tree:
+  
+ Node 1: PAP = NA
+   Node 2: 0
+ Node 1: PAP /= NA
+   Node 3: PINCP = NA
+     Node 6: PERNP = NA
+       Node 12: 1
+     Node 6: PERNP /= NA
+       Node 13: 0
+   Node 3: PINCP /= NA
+     Node 7: 1
+ 
+ ***************************************************************
+ 
+ In the following the predictor node mean is weighted mean of complete cases.
+  
+Node 1: Intermediate node
+ A case goes into Node 2 if PAP = NA
+ PAP mean = 21.996130
+ Class      Number   Posterior
+ 0            3800     0.50000
+ 1           20238     0.50000
+ Number of training cases misclassified = 20238
+ Predicted class is 0
+ ----------------------------
+Node 2: Terminal node
+ Class      Number   Posterior
+ 0            3037     0.98221
+ 1             293     0.01779
+ Number of training cases misclassified = 293
+ Predicted class is 0
+ ----------------------------
+Node 3: Intermediate node
+ A case goes into Node 6 if PINCP = NA
+ PINCP mean = 28459.311
+ Class      Number   Posterior
+ 0             763     0.16926
+ 1           19945     0.83074
+ Number of training cases misclassified = 763
+ Predicted class is 1
+ ----------------------------
+Node 6: Intermediate node
+ A case goes into Node 12 if PERNP = NA
+ PERNP mean = 7535.0888
+ Class      Number   Posterior
+ 0             763     0.56270
+ 1            3158     0.43730
+ Number of training cases misclassified = 3158
+ Predicted class is 0
+ ----------------------------
+Node 12: Terminal node
+ Class      Number   Posterior
+ 0             191     0.32611
+ 1            2102     0.67389
+ Number of training cases misclassified = 191
+ Predicted class is 1
+ ----------------------------
+Node 13: Terminal node
+ Class      Number   Posterior
+ 0             572     0.74259
+ 1            1056     0.25741
+ Number of training cases misclassified = 1056
+ Predicted class is 0
+ ----------------------------
+Node 7: Terminal node
+ Class      Number   Posterior
+ 0               0     0.00000
+ 1           16787     1.00000
+ Number of training cases misclassified = 0
+ Predicted class is 1
+ ----------------------------
+  
+ ******************************************************
+ Variables used for splitting:
+ PAP
+ PERNP
+ PINCP
+ 
+ Number of terminal nodes: 4
+ 
+  Predictor variables sorted by importance scores
+  Importance Scores
+ Scaled       Unscaled         Rank  Variable
+  100.0    2.30157E+03         1.00  PAP
+   98.7    2.27097E+03         2.00  OIP
+   96.7    2.22471E+03         3.00  SSIP
+   95.0    2.18630E+03         4.00  RETP
+   85.8    1.97529E+03         5.00  SSP
+   71.4    1.64287E+03         6.00  PINCP
+   57.4    1.32145E+03         7.00  SEMP
+   54.8    1.26105E+03         8.00  WKL
+   46.5    1.06980E+03         9.00  DOUT
+   44.5    1.02352E+03        10.00  DDRS
+   44.3    1.01972E+03        11.00  DPHY
+   44.1    1.01544E+03        12.00  DREM
+   43.4    9.99064E+02        13.00  DIS
+   43.0    9.89590E+02        14.00  ESR
+   40.0    9.21417E+02        15.00  WAGP
+   39.2    9.01465E+02        16.00  LANX
+   37.9    8.72654E+02        17.00  DEAR
+   37.5    8.62374E+02        18.00  DEYE
+   36.8    8.47245E+02        19.00  SCH
+   36.5    8.40274E+02        20.00  HINS3
+   36.4    8.37700E+02        21.00  PERNP
+   33.0    7.58672E+02        22.00  CIT
+   32.7    7.51854E+02        23.00  MIL
+   30.5    7.02868E+02        24.00  MAR
+   29.3    6.74966E+02        25.00  HINS2
+   28.9    6.65910E+02        26.00  HINS1
+   27.4    6.30941E+02        27.00  SCHL
+   27.3    6.28545E+02        28.00  PUBCOV
+   27.1    6.23358E+02        29.00  WRK
+   26.8    6.17109E+02        30.00  HINS5
+   26.8    6.17045E+02        31.00  HINS6
+   26.2    6.03857E+02        32.00  HICOV
+   25.7    5.92358E+02        33.00  HINS7
+   25.6    5.88402E+02        34.00  HINS4
+   25.5    5.87273E+02        35.00  PRIVCOV
+   20.4    4.68469E+02        36.00  POBP
+   18.5    4.26733E+02        37.00  ANC
+   13.7    3.14392E+02        38.00  ANC1P
+   10.1    2.32977E+02        39.00  COW
+    9.9    2.26892E+02        40.00  HISP
+    7.8    1.79171E+02        41.00  WKHP
+    7.4    1.70800E+02        42.00  WKW
+    5.7    1.30088E+02        43.00  MARHW
+    5.5    1.26965E+02        44.00  MARHD
+    5.5    1.26508E+02        45.00  INDP
+    5.1    1.18449E+02        46.00  MARHT
+    5.0    1.14591E+02        47.00  MARHYP
+    4.4    1.01920E+02        48.00  AGEP
+    4.4    1.00477E+02        49.00  JWMNP
+    4.1    9.52476E+01        50.00  JWDP
+    4.0    9.28731E+01        51.00  OCCP
+    4.0    9.20587E+01        52.00  NWAB
+    3.8    8.71718E+01        53.00  NWLK
+    3.8    8.71263E+01        54.00  JWRIP
+    3.7    8.60975E+01        55.00  MARHM
+    3.5    7.97327E+01        56.00  NWLA
+    3.3    7.58241E+01        57.00  FFODP
+    3.2    7.42180E+01        58.00  FMILPP
+    3.2    7.37672E+01        59.00  JWTR
+    3.0    6.81557E+01        60.00  RELP
+    3.0    6.80460E+01        61.00  POWSP
+    2.6    5.89534E+01        62.00  FER
+    2.3    5.30051E+01        63.00  FHINS3C
+    1.6    3.70078E+01        64.00  RACPI
+    1.1    2.49565E+01        65.00  MSP
+    1.0    2.35152E+01        66.00  OC
+    1.0    2.32696E+01        67.00  RC
+    0.9    1.95720E+01        68.00  SCHG
+    0.8    1.83428E+01        69.00  POVPIP
+    0.7    1.55312E+01        70.00  ANC2P
+    0.6    1.29259E+01        71.00  SEX
+    0.5    1.20723E+01        72.00  PAOC
+    0.5    1.18083E+01        73.00  FHINS4C
+    0.5    1.05080E+01        74.00  NWAV
+    0.4    9.99195E+00        75.00  NWRE
+    0.4    9.65102E+00        76.00  GCL
+    0.3    7.78878E+00        77.00  VPS
+    0.3    7.60130E+00        78.00  MIGSP
+    0.3    7.49492E+00        79.00  RAC3P
+    0.3    6.83384E+00        80.00  RACWHT
+    0.3    6.79992E+00        81.00  RACBLK
+    0.3    6.01399E+00        82.00  GCR
+    0.3    5.94551E+00        83.00  DRATX
+    0.2    5.33464E+00        84.00  RAC1P
+    0.2    5.06593E+00        85.00  MLPH
+    0.2    4.67977E+00        86.00  YOEP
+    0.2    4.42977E+00        87.00  RAC2P
+    0.2    4.08939E+00        88.00  MLPFG
+    0.2    3.54017E+00        89.00  SCIENGP
+    0.1    3.30218E+00        90.00  SCIENGRLP
+    0.1    2.95085E+00        91.00  DRIVESP
+    0.1    2.69624E+00        92.00  MLPJ
+    0.1    2.69405E+00        93.00  MLPCD
+    0.1    2.62677E+00        94.00  JWAP
+    0.1    2.16540E+00        95.00  GCM
+    0.1    2.16221E+00        96.00  MLPI
+    0.1    1.95183E+00        97.00  POWPUMA
+    0.1    1.88451E+00        98.00  MLPB
+    0.1    1.80592E+00        99.00  MLPA
+    0.1    1.58596E+00       100.00  MLPK
+    0.1    1.43247E+00       101.00  MLPE
+    0.1    1.27410E+00       102.00  LANP
+    0.0    1.03799E+00       103.00  CITWP
+ ----------------- cut-off -------------------
+    0.0    9.22301E-01       104.00  NOP
+    0.0    8.91405E-01       105.00  ESP
+    0.0    8.61001E-01       106.00  NATIVITY
+    0.0    6.24651E-01       107.00  DECADE
+    0.0    6.09187E-01       108.00  RACAIAN
+    0.0    6.06930E-01       109.00  DRAT
+    0.0    5.96884E-01       110.00  FOD1P
+    0.0    5.46928E-01       111.00  SFR
+    0.0    5.43418E-01       112.00  MIGPUMA
+    0.0    5.41473E-01       113.00  ENG
+    0.0    5.15118E-01       114.00  MIG
+    0.0    3.91945E-01       115.00  FOD2P
+    0.0    3.32747E-01       116.00  RACASN
+    0.0    2.67982E-01       117.00  SFN
+    0.0    2.33973E-01       118.00  RACNH
+    0.0    2.31103E-01       119.00  QTRBIR
+    0.0    2.28751E-01       120.00  WAOB
+    0.0    2.26423E-01       121.00  FHINS5C
+    0.0    2.22636E-01       122.00  RACNUM
+    0.0    7.58539E-02       123.00  RACSOR
+ Variables with unscaled scores above 1 are important
+ 
+ Number of important and unimportant split variables: 103, 20
+ Importance scores are stored in imp.scr
+ Elapsed time in seconds: 2412.9

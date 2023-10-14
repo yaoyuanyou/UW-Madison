@@ -1,0 +1,766 @@
+This is XeTeX, Version 3.14159265-2.6-0.999991 (MiKTeX 2.9.7140 64-bit) (preloaded format=xelatex 2019.9.23)  31 OCT 2019 23:32
+entering extended mode
+**./Mississippi.tex
+(Mississippi.tex
+LaTeX2e <2018-12-01>
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size12.clo"
+File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pstricks\pstricks.
+sty"
+Package: pstricks 2018/12/21 v0.69 LaTeX wrapper for `PSTricks' (RN,HV)
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/iftex\iftex.sty"
+Package: iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, 
+and LuaTeX
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\shellesc.sty
+"
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 69.
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\color
+.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 225.
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\xetex
+.def"
+File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xkeyval\pst-xkey
+.tex"
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xkeyval\xkeyval.st
+y"
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xkeyval\xkeyval.
+tex"
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xkeyval\xkvutils
+.tex"
+\XKV@toks=\toks14
+\XKV@tempa@toks=\toks15
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xkeyval\keyval.t
+ex"))
+\XKV@depth=\count88
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)))
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pstricks\pstrick
+s.tex"
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pstricks\pst-fp.
+tex" `pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count89
+\pstFP@xia=\count90
+\pstFP@xib=\count91
+\pstFP@xfa=\count92
+\pstFP@xfb=\count93
+\pstFP@rega=\count94
+\pstFP@regb=\count95
+\pstFP@regs=\count96
+\pstFP@times=\count97
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
+futil-common.tex"
+\pgfutil@everybye=\toks16
+\pgfutil@tempdima=\dimen103
+\pgfutil@tempdimb=\dimen104
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
+futil-common-lists.tex"))
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
+fkeys.code.tex"
+\pgfkeys@pathtoks=\toks17
+\pgfkeys@temptoks=\toks18
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
+fkeysfiltered.code.tex"
+\pgfkeys@tmptoks=\toks19
+))
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
+ffor.code.tex"
+Loading pgffor.code.tex
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+.code.tex"
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+calc.code.tex"
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+util.code.tex"
+\pgf@x=\dimen105
+\pgf@xa=\dimen106
+\pgf@xb=\dimen107
+\pgf@xc=\dimen108
+\pgf@y=\dimen109
+\pgf@ya=\dimen110
+\pgf@yb=\dimen111
+\pgf@yc=\dimen112
+\c@pgf@counta=\count98
+\c@pgf@countb=\count99
+\c@pgf@countc=\count100
+\c@pgf@countd=\count101
+\pgfutil@tempcnta=\count102
+\pgfutil@tempcntb=\count103
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+parser.code.tex"
+\pgfmath@dimen=\dimen113
+\pgfmath@count=\count104
+\pgfmath@box=\box27
+\pgfmath@toks=\toks20
+\pgfmath@stack@operand=\toks21
+\pgfmath@stack@operation=\toks22
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+functions.code.tex"
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+functions.basic.code.tex")
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+functions.trigonometric.code.tex")
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+functions.random.code.tex")
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+functions.comparison.code.tex")
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+functions.base.code.tex")
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+functions.round.code.tex")
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+functions.misc.code.tex")
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+functions.integerarithmetics.code.tex")))
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
+float.code.tex"
+\c@pgfmathroundto@lastzeros=\count105
+))
+\pgffor@iter=\dimen114
+\pgffor@skip=\dimen115
+\pgffor@stack=\toks23
+\pgffor@toks=\toks24
+)
+\psLoopIndex=\count106
+
+`PSTricks' v2.97  <2019/05/11> (tvz,hv)
+\pst@dima=\dimen116
+\pst@dimb=\dimen117
+\pst@dimc=\dimen118
+\pst@dimd=\dimen119
+\pst@dimg=\dimen120
+\pst@dimh=\dimen121
+\pst@dimm=\dimen122
+\pst@dimn=\dimen123
+\pst@dimo=\dimen124
+\pst@dimp=\dimen125
+\pst@hbox=\box28
+\pst@ibox=\box29
+\pst@boxg=\box30
+\pst@cnta=\count107
+\pst@cntb=\count108
+\pst@cntc=\count109
+\pst@cntd=\count110
+\pst@cntg=\count111
+\pst@cnth=\count112
+\pst@cntm=\count113
+\pst@cntn=\count114
+\pst@cnto=\count115
+\pst@cntp=\count116
+\@zero=\count117
+\pst@toks=\toks25
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/xelatex/xetex-pstricks\p
+stricks.con"
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pstricks\xdvipdf
+mx.cfg"))
+\psunit=\dimen126
+\psxunit=\dimen127
+\psyunit=\dimen128
+\pst@C@@rType=\count118
+\pslinewidth=\dimen129
+\psk@startLW=\dimen130
+\psk@endLW=\dimen131
+\pst@customdefs=\toks26
+\pslinearc=\dimen132
+\pst@symbolStep=\dimen133
+\pst@symbolWidth=\dimen134
+\pst@symbolLinewidth=\dimen135
+\everypsbox=\toks27
+\psframesep=\dimen136
+\pslabelsep=\dimen137
+\sh@wgridXunit=\dimen138
+\sh@wgridYunit=\dimen139
+\pst@shift=\dimen140
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/xelatex/xetex-pstricks\p
+stricks.con"
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pstricks\xdvipdf
+mx.cfg"
+Using PSTricks configuration for XeTeX+xdvipdfmx
+)))
+File: pstricks.tex 2019/05/11 v2.97 `PSTricks' (tvz,hv)
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pstricks\pst-fp.
+tex")
+File: pst-fp.tex 2019/05/11 v2.97 `PST-fp' (hv)
+
+>>> Loading XeTeX special macros
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pstricks\pstrick
+s-xetex.def"))
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pst-node\pst-node.
+sty"
+Package: pst-node 2012/09/18 v1.01 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pst-node\pst-nod
+e.tex"  v1.42, 2019/03/03
+\psrow=\count119
+\pscol=\count120
+\psmatrixcnt=\count121
+\psrowsep=\skip43
+\pscolsep=\skip44
+\pst@args=\count122
+\num@pts=\count123
+\pst@argcnt=\count124
+)
+File: pst-node.tex 2019/03/03 1.42 `pst-node' (tvz,hv)
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pst-tree\pst-tree.
+sty"
+Package: pst-tree 2009/01/25 package wrapper for pst-tree.tex
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pst-tree\pst-tre
+e.tex"  v1.13, 2017/02/18(tvz,dg,hv)
+\pstree@rootbox=\box31
+\pstree@box=\box32
+\psnodecnt=\count125
+\pstreelevel=\count126
+\pstreecnt=\count127
+\pstree@cnt=\count128
+\pstree@stop=\count129
+)
+File: pst-tree.tex 2017/02/18 1.13 `pst-tree' (tvz,hv)
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
+sty"
+Package: geometry 2018/04/16 v5.8 Page Geometry
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpdf.s
+ty"
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifvtex.
+sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ifxetex\ifxetex.
+sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count130
+\Gm@cntv=\count131
+\c@Gm@tempcnt=\count132
+\Gm@bindingoffset=\dimen141
+\Gm@wd@mp=\dimen142
+\Gm@odd@mp=\dimen143
+\Gm@even@mp=\dimen144
+\Gm@layoutwidth=\dimen145
+\Gm@layoutheight=\dimen146
+\Gm@layouthoffset=\dimen147
+\Gm@layoutvoffset=\dimen148
+\Gm@dimlist=\toks28
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/xelatex/xetexconfig\geom
+etry.cfg"))
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.
+sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
+sty"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graph
+ics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 99.
+)
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\lscape.st
+y"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+("C:\Users\yyy04\AppData\Local\Programs\MiKTeX 2.9\tex/latex/appendix\appendix.
+sty"
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count133
+\c@@ppsavesec=\count134
+\c@@ppsaveapp=\count135
+) (Mississippi.aux)
+\openout1 = `Mississippi.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=430.00462pt
+* \textheight=556.47656pt
+* \oddsidemargin=19.8752pt
+* \evensidemargin=19.8752pt
+* \topmargin=-13.87262pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 11.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 11.
+
+LaTeX Warning: No \author given.
+
+[1
+
+] (Mississippi.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 12.
+)
+\tf@toc=\write3
+\openout3 = `Mississippi.toc'.
+
+ [2]
+Missing character: There is no π in font [lmroman12-regular]:mapping=tex-text;!
+
+Overfull \hbox (56.17859pt too wide) in paragraph at lines 73--74
+ [] 
+ []
+
+[3] [4]
+File: imp.jpeg Graphic file (type bmp)
+<imp.jpeg>
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--225
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--225
+
+ []
+
+[5] [6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--231
+
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--237
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--248
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 262--263
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 266--269
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 274--559
+
+ []
+
+[11] [12] [13] [14] [15] [16] [17]
+Overfull \hbox (17.71538pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 for (i in (grep(”FAGEP”,colnames(rawdataAl)):grep(”FYOEP”,colnam
+es(rawdataAl))))
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--722
+
+ []
+
+
+Overfull \hbox (76.42737pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 Flagname[i+1-grep(”FAGEP”,colnames(rawdataAl))] = unlist(strspli
+t(colnames(rawdataAl[i]),split
+ []
+
+
+Overfull \hbox (155.96739pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 Flagname1 = data.frame(Rawname = rep(NA,length(Flagname)),Flagna
+me = rep(NA,length(Flagname)),Rawnum
+ []
+
+
+Overfull \hbox (183.89137pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 = rep(0,length(Flagname)),Flagnum = c(grep(”FAGEP”,colnames(rawd
+ataAl)):grep(”FYOEP”,colnames(rawdataAl)))) 
+ []
+
+
+Overfull \hbox (140.0834pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 if(i %in% c(18,25,27,29,50))next if(Flagname1$Rawname[i]%in% col
+names(rawdataAl))Flagname1$Rawnum[i]=
+ []
+
+
+Overfull \hbox (6.70738pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 which(colnames(rawdataAl)==Flagname1$Rawname[i])  for (i in 1:nr
+ow(Flagname1)) 
+ []
+
+
+Overfull \hbox (600.50734pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 c(”CIT”,”COW”,”DDRS”,”DEAR”,”DEYE”,”DOUT”,”DPHY”,”DRAT”,”DRATX”,
+”DREM”,”ENG”,”FER”,”GCL”,”GCM”,”GCR”,”HINS1”,”HINS2”,”HINS3”,”HINS4”,”HINS5”,”H
+INS6”,”HINS7”,
+ []
+
+
+Overfull \hbox (686.1874pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 ”JWTR”,”LANX”,”MAR”,”MARHD”,”MARHM”,”MARHT”,”MARHW”,”MIG”,”MIL”,
+”MLPA”,”MLPB”,”MLPCD”,”MLPE”,”MLPFG”,”MLPH”,”MLPI”,”MLPJ”,”MLPK”,”NWAB”,”NWAV”,
+”NWLA”,”NWLK”,
+ []
+
+
+Overfull \hbox (609.55544pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 ”NWRE”,”RELP”,”SCH”,”SCHG”,”SCHL”,”SEX”,”WKL”,”WKW”,”WRK”,”ANC”,
+”ANC1P”,”ANC2P”,”DECADE”,”DIS”,”DRIVESP”,”ESP”,”ESR”,”FOD1P”,”FOD2P”,”HICOV”,”H
+ISP”,”INDP”,
+ []
+
+
+Overfull \hbox (571.14339pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 ”LANP”,”MIGPUMA”,”MIGSP”,”MSP”,”NATIVITY”,”NOP”,”OC”,”OCCP”,”PAO
+C”,”POBP”,”POWPUMA”,”POWSP”,”PRIVCOV”,”PUBCOV”,”QTRBIR”,”RAC1P”,”RAC2P”,”RAC3P”
+,
+ []
+
+
+Overfull \hbox (676.71938pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 ”RACAIAN”,”RACASN”,”RACBLK”,”RACNH”,”RACNUM”,”RACPI”,”RACSOR”,”R
+ACWHT”,”RC”,”SCIENGP”,”SCIENGRLP”,”SFN”,”SFR”,”VPS”,”WAOB”,”FFODP”,”FHINS3C”,”F
+HINS4C”,”FHINS5C”,
+ []
+
+
+Overfull \hbox (474.40738pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 n.vars = c(”AGEP”,”CITWP”,”JWMNP”,”JWRIP”,”MARHYP”,”OIP”,”PAP”,”
+RETP”,”SEMP”,”SSIP”,”SSP”,”WAGP”,”WKHP”,”YOEP”,”PERNP”,”PINCP”,”POVPIP”) 
+ []
+
+
+Overfull \hbox (181.46338pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 x.vars = c(”SPORDER”,”PUMA”,”RT”,”SERIALNO”,”DIVISION”,”REGION”,
+”ST”,”ADJINC”,”INTP”,Flagname1[-
+ []
+
+
+Overfull \hbox (89.68738pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 exclude1 = c(”SPORDER”,”PUMA”,”RT”,”SERIALNO”,”DIVISION”,”REGION
+”,”ST”,”ADJINC”) 
+ []
+
+
+Overfull \hbox (8063.57547pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 a=lm(datR$INTP datR$FOD1P+datR$FOD2P+datR$ANC1P+datR$ANC2P+datR$
+VPS+datR$LANP+datR$DRAT+datR$DECADE+datR$HINS2+datR$FHINS3C+datR$HINS5+datR$HIN
+S6+datR$HINS7+datR$MLPFG+datR$MARHYP+datR$HINS4+datR$MLPE+datR$SCIENGP+datR$RET
+P+datR$SSP+datR$MLPH+datR$MLPJ+datR$SCIENGP+datR$PINCP+datR$DRATX+datR$PRIVCOV+
+datR$PUBCOV+datR$MLPCD+datR$MARHW+datR$OIP+datR$POVPIP+datR$SEMP+datR$MLPI+datR
+$HINS3+datR$AGEP+datR$HICOV+datR$MLPK+datR$HINS1+datR$MLPA+datR$MLPB+datR$RACBL
+K+datR$RACWHT+datR$COW+datR$MIL+datR$NWAV+datR$MARHT+datR$MSP+datR$CITWP+datR$M
+AR+datR$ANC+datR$FFODP+datR$MARHM+datR$RACASN+datR$WKL+datR$DIS+datR$PERNP+datR
+$WKHP+datR$FMILPP+datR$RACNH+datR$QTRBIR+datR$WAGP+datR$JWAP+datR$JWDP+datR$JWT
+R+datR$ESP+datR$ESR+datR$SFR+datR$RACNUM+datR$GCM+datR$DRIVESP+datR$CIT+datR$RE
+LP+datR$SEX+datR$RAC1P+datR$RACPI+datR$ENG+datR$MIG+datR$SFN+datR$FHINS5C+datR$
+RACAIAN+datR$NWRE+datR$RACSOR+datR$DEAR+datR$OC+datR$SCH+datR$GCR+datR$DEYE+dat
+R$DOUT+datR$LANX+datR$NWAB+datR$DREM+datR$DDRS+datR$NWLA+datR$DPHY+datR$PAP+dat
+R$SSIP+datR$YOEP+datR$RC+datR$NWLK+datR$MARHD+datR$FER+datR$WKW+datR$JWRIP+datR
+$NATIVITY+datR$PAOC+datR$FHINS4C+datR$GCL+datR$WRK+datR$JWMNP) 
+ []
+
+
+Overfull \hbox (65.95537pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 barplot(z0$Score[1:30],names.arg=z0$Variable[1:30],col=”cyan”,ho
+riz=TRUE,xlab=”Importance
+ []
+
+
+Overfull \hbox (21.83138pt too wide) in paragraph at lines 560--722
+\TU/lmr/m/n/12 pifile=read.table(”MS.FIT”,header = T) regressionfile=read.table
+(”regression.fit”,header
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--722
+
+ []
+
+[18] [19] [20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 724--754
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 763--769
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 792--925
+
+ []
+
+[24] [25] [26] [27]
+Underfull \hbox (badness 10000) in paragraph at lines 940--971
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 983--1003
+
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 1010--1035
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1038--1039
+
+ []
+
+[30] [31] [32] [33]
+Underfull \hbox (badness 10000) in paragraph at lines 1188--1192
+
+ []
+
+
+Overfull \hbox (126.06737pt too wide) in paragraph at lines 1194--1224
+\TU/lmr/m/n/12 6 (1=white,2=lightgray,3=gray,4=darkgray,5=black,6=yellow,7=red,
+8=blue,9=green,10=magenta,11=cyan) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1194--1224
+
+ []
+
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 1226--1233
+
+ []
+
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1258
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1259--1393
+
+ []
+
+[36] [37] [38] [39]
+Underfull \hbox (badness 10000) in paragraph at lines 1394--1402
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1403--1407
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1408--1473
+
+ []
+
+[40] [41]
+Underfull \hbox (badness 10000) in paragraph at lines 1474--1482
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1483--1484
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1487--1495
+
+ []
+
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 1496--1499
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1500--1501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1502--1506
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1509--1510
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1511--1512
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1513--1515
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1516--1518
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1519--1539
+
+ []
+
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 1540--1541
+
+ []
+
+[44] (Mississippi.aux) ) 
+Here is how much of TeX's memory you used:
+ 9248 strings out of 427669
+ 159982 string characters out of 3144952
+ 266125 words of memory out of 3000000
+ 13199 multiletter control sequences out of 15000+200000
+ 7393 words of font info for 39 fonts, out of 3000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 36i,11n,43p,1285b,1136s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on Mississippi.pdf (44 pages).

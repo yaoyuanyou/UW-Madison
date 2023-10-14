@@ -1,0 +1,320 @@
+             GGG   U   U  I  DDDD   EEEE
+            G   G  U   U  I  D   D  E
+            G      U   U  I  D   D  E
+            G  GG  U   U  I  D   D  EEE
+            G   G  U   U  I  D   D  E
+            G   G  U   U  I  D   D  E
+             GGG    UUU   I  DDDD   EEEE
+   
+ GUIDE Classification and Regression Trees and Forests
+ Version 32.0 (Build date: August 29, 2019)        
+ Compiled with Visual Fortran 64 18.0.1.156 on Windows 10              
+ Copyright (c) 1997-2019 Wei-Yin Loh. All rights reserved.
+ This software is based upon work supported by the U.S. Army Research Office,
+ the National Science Foundation and the National Institutes of Health.
+  
+ This job was started on 10/31/19 at 18:48
+  
+ Least squares regression tree
+ Pruning by cross-validation
+ Data description file: desc.txt
+ Training sample file: model.txt
+ Missing value code: NA
+ Records in data file start on line 2
+ Warning: N variables changed to S
+ Warning: B variables changed to C
+ Dependent variable is INTP
+ Piecewise constant model
+ Number of records in data file: 24038
+ Length of longest entry in data file: 13
+ Missing values found among categorical variables
+ Separate categories will be created for missing categorical variables
+ Smallest and largest positive weights are  2.0000E+00 1.0510E+03
+  
+ Summary information for training sample of size 20238 (excluding observations
+ with non-positive weight or missing values in d, e, t, r or z variables)
+ d=dependent, b=split and fit cat variable using indicator variables,
+ c=split-only categorical, i=fit-only categorical (via indicators),
+ s=split-only numerical, n=split and fit numerical, f=fit-only numerical,
+ m=missing-value flag variable, p=periodic variable, w=weight,
+                                                  #Codes/           
+                                                  Levels/           
+  Column  Name            Minimum      Maximum    Periods   #Missing
+       9  PWGTP      w    2.000        1051.    
+      10  AGEP       s    15.00        93.00                    124
+      11  CIT        c                                  5        66
+      12  CITWP      s    1939.        2017.                  20040
+      13  COW        c                                  9      7904
+      14  DDRS       c                                  2       204
+      15  DEAR       c                                  2        98
+      16  DEYE       c                                  2       143
+      17  DOUT       c                                  2       171
+      18  DPHY       c                                  2       203
+      19  DRAT       c                                  6     19789
+      20  DRATX      c                                  2     18212
+      21  DREM       c                                  2       193
+      22  ENG        c                                  4     19507
+      23  FER        c                                  2     14811
+      24  GCL        c                                  2      4945
+      25  GCM        c                                  5     19918
+      26  GCR        c                                  2     19541
+      27  HINS1      c                                  2      1118
+      28  HINS2      c                                  2      1197
+      29  HINS3      c                                  2       543
+      30  HINS4      c                                  2      1487
+      31  HINS5      c                                  2      1503
+      32  HINS6      c                                  2      1499
+      33  HINS7      c                                  2      1702
+      34  INTP       d   -1500.       0.2900E+06
+      35  JWMNP      s    1.000        160.0                  11302
+      36  JWRIP      s    1.000        10.00                  11405
+      37  JWTR       c                                  9     10721
+      38  LANX       c                                  2       187
+      39  MAR        c                                  5       133
+      40  MARHD      c                                  2      6580
+      41  MARHM      c                                  2      6574
+      42  MARHT      c                                  3      6642
+      43  MARHW      c                                  2      6581
+      44  MARHYP     s    1940.        2017.                   7503
+      45  MIG        c                                  3
+      46  MIL        c                                  4       856
+      47  MLPA       c                                  2     18631
+      48  MLPB       c                                  2     18631
+      49  MLPCD      c                                  2     18631
+      50  MLPE       c                                  2     18631
+      51  MLPFG      c                                  2     18631
+      52  MLPH       c                                  2     18631
+      53  MLPI       c                                  2     18631
+      54  MLPJ       c                                  2     18631
+      55  MLPK       c                                  1     18631
+      56  NWAB       c                                  3       338
+      57  NWAV       c                                  4       338
+      58  NWLA       c                                  3       338
+      59  NWLK       c                                  3       338
+      60  NWRE       c                                  3       338
+      61  OIP        s    0.000       0.6400E+05                316
+      62  PAP        s    0.000       0.3000E+05                293
+      63  RELP       c                                 18       125
+      64  RETP       s    0.000       0.9400E+05                491
+      65  SCH        c                                  3       164
+      66  SCHG       c                                  9     17498
+      67  SCHL       c                                 24       470
+      68  SEMP       s   -6900.       0.2390E+06                590
+      69  SEX        c                                  2         7
+      70  SSIP       s    0.000       0.3000E+05                314
+      71  SSP        s    0.000       0.5000E+05                831
+      72  WAGP       s    0.000       0.3090E+06               2019
+      73  WKHP       s    1.000        99.00                   9503
+      74  WKL        c                                  3       730
+      75  WKW        c                                  6      9367
+      76  WRK        c                                  2      1336
+      77  YOEP       s    1926.        2017.                  19649
+      78  ANC        c                                  4
+      79  ANC1P      c                                147
+      80  ANC2P      c                                 96
+      81  DECADE     c                                  8     19599
+      82  DIS        c                                  2       475
+      83  DRIVESP    c                                  6     11010
+      84  ESP        c                                  8     19331
+      85  ESR        c                                  6       692
+      86  FOD1P      c                                161     16047
+      87  FOD2P      c                                 92     19914
+      88  HICOV      c                                  2      2000
+      89  HISP       c                                 18       338
+      90  INDP       c                                257      7920
+      91  JWAP       p    1.000        284.0          286     10674
+      92  JWDP       p    1.000        150.0          151     11809
+      93  LANP       c                                 48     19535
+      94  MIGPUMA    c                                 88     17785
+      95  MIGSP      c                                 58     17894
+      96  MSP        c                                  6
+      97  NATIVITY   c                                  2
+      98  NOP        c                                  8     19331
+      99  OC         c                                  2      1535
+     100  OCCP       c                                446      8032
+     101  PAOC       c                                  4     10321
+     102  PERNP      s   -6900.       0.5480E+06               2485
+     103  PINCP      s   -6900.       0.8380E+06               3451
+     104  POBP       c                                139       894
+     105  POVPIP     s    0.000        501.0                   1366
+     106  POWPUMA    c                                 64     10427
+     107  POWSP      c                                 37     10986
+     108  PRIVCOV    c                                  2      1847
+     109  PUBCOV     c                                  2      1812
+     110  QTRBIR     c                                  4
+     111  RAC1P      c                                  8
+     112  RAC2P      c                                 34
+     113  RAC3P      c                                 48
+     114  RACAIAN    c                                  2
+     115  RACASN     c                                  2
+     116  RACBLK     c                                  2
+     117  RACNH      c                                  2
+     118  RACNUM     c                                  4
+     119  RACPI      c                                  2        94
+     120  RACSOR     c                                  2
+     121  RACWHT     c                                  2
+     122  RC         c                                  2      1535
+     123  SCIENGP    c                                  2     16050
+     124  SCIENGRLP  c                                  2     16047
+     125  SFN        c                                  2     19764
+     126  SFR        c                                  6     19764
+     127  VPS        c                                 14     18631
+     128  WAOB       c                                  8
+     146  FFODP      c                                  2
+     153  FHINS3C    c                                  2     14787
+     155  FHINS4C    c                                  2     16763
+     157  FHINS5C    c                                  2     19196
+     178  FMILPP     c                                  2
+  
+      Total  #cases w/   #missing
+     #cases    miss. D  ord. vals   #X-var   #N-var   #F-var   #S-var
+      24038       3800      23972      160        0        0       17
+     #P-var   #M-var   #B-var   #C-var   #I-var
+          2        0        0      104        0
+ Weight variable in column: 9
+ No. cases used for training: 20238
+ No. cases excluded due to 0 weight or missing D: 3800
+  
+ Nodewise interaction tests on all variables
+ Pruning by v-fold cross-validation, with v = 10
+ Selected tree is based on mean of CV estimates
+ Number of SE's for pruned tree: .2000
+  
+ Weighted error estimates used for pruning
+ Split values for N and S variables based on exhaustive search
+ Maximum number of split levels: 30
+ Minimum node sample size: 101
+ Size and CV MSE and SE of subtrees:
+  Tree   #Tnodes  Mean MSE   SE(Mean)    BSE(Mean)  Median MSE  BSE(Median)
+    1      110   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+    2      109   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+    3      106   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+    4      105   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+    5      104   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+    6      102   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+    7      101   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+    8      100   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+    9       99   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   10       96   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   11       95   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   12       93   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   13       92   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   14       91   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   15       89   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   16       88   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   17       87   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   18       86   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   19       83   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   20       82   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   21       78   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   22       77   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   23       74   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   24       73   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   25       72   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   26       71   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   27       68   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   28       67   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   29       66   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   30       65   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   31       64   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   32       63   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   33       58   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   34       53   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   35       52   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   36       51   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   37       50   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   38       49   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   39*      48   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   40       47   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   41       41   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   42       40   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.564E+09
+   43       39   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.564E+09
+   44       38   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.564E+09
+   45       32   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.564E+09
+   46       31   1.558E+10   1.935E+09   2.206E+09   1.461E+10   2.563E+09
+   47       29   1.558E+10   1.935E+09   2.205E+09   1.461E+10   2.561E+09
+   48       26   1.558E+10   1.935E+09   2.205E+09   1.461E+10   2.561E+09
+   49       20   1.558E+10   1.935E+09   2.206E+09   1.460E+10   2.561E+09
+   50+      16   1.559E+10   1.935E+09   2.207E+09   1.460E+10   2.560E+09
+   51       10   1.559E+10   1.935E+09   2.207E+09   1.461E+10   2.560E+09
+   52        9   1.559E+10   1.935E+09   2.207E+09   1.461E+10   2.560E+09
+   53        8   1.562E+10   1.944E+09   2.211E+09   1.463E+10   2.564E+09
+   54        7   1.561E+10   1.945E+09   2.214E+09   1.465E+10   2.571E+09
+   55        6   1.564E+10   1.953E+09   2.226E+09   1.468E+10   2.563E+09
+   56        5   1.566E+10   1.957E+09   2.225E+09   1.479E+10   2.569E+09
+   57        4   1.567E+10   1.958E+09   2.227E+09   1.479E+10   2.557E+09
+   58**      2   1.568E+10   1.958E+09   2.236E+09   1.494E+10   2.533E+09
+   59        1   1.922E+10   2.849E+09   3.395E+09   1.845E+10   3.574E+09
+  
+ 0-SE tree based on mean is marked with * and has 48 terminal nodes
+ 0-SE tree based on median is marked with + and has 16 terminal nodes
+ Selected-SE tree based on mean using naive SE is marked with **
+ Selected-SE tree based on mean using bootstrap SE is marked with --
+ Selected-SE tree based on median and bootstrap SE is marked with ++
+ ** tree same as ++ tree
+ ** tree same as -- tree
+ ++ tree same as -- tree
+  
+ Following tree is based on mean CV with naive SE estimate (**).
+  
+ Structure of final tree. Each terminal node is marked with a T.
+  
+ D-mean is weighted mean of INTP in the node
+ Cases fit give the number of cases used to fit node
+ MSE is residual sum of squares divided by number of cases in node
+        Node    Total    Cases Matrix    Node      Node      Split          Interacting
+        label   cases      fit  rank    D-mean     MSE       variable       variable
+           1    20238    20238     1  9.918E+02  1.922E+10   PINCP 
+           2T   20057    20057     1  4.595E+02  4.180E+09   PINCP 
+           3T     181      181     1  7.121E+04  1.264E+12   - 
+  
+ Number of terminal nodes of final tree: 2
+ Total number of nodes of final tree: 3
+ Second best split variable (based on curvature test) at root node is POVPIP
+  
+ Regression tree:
+  
+ Node 1: PINCP <= 289500.00 or NA
+   Node 2: INTP-mean = 459.46349
+ Node 1: PINCP > 289500.00
+   Node 3: INTP-mean = 71207.895
+ 
+ ***************************************************************
+ 
+ In the following the predictor node mean is weighted mean of complete cases.
+  
+ WARNING: p-values below not adjusted for split search. For a bootstrap solution see:
+  
+ 1. Loh et al. (2016), "Identification of subgroups with differential treatment effects
+ for longitudinal and multiresponse variables", Statistics in Medicine, v.35, 4837-4855.
+  
+ 2. Loh et al. (2019), "Subgroups from regression trees with adjustment for prognostic
+ effects and post-selection inference", Statistics in Medicine, v.38, 545-557.
+  
+Node 1: Intermediate node
+ A case goes into Node 2 if PINCP <= 289500.00 or NA
+ PINCP mean = 28459.311
+ Coefficients of least squares regression function:
+ Regressor    Coefficient  t-stat      p-value
+ Constant     991.83       7.7927       0.0000    
+ Mean of INTP = 991.828
+ ----------------------------
+Node 2: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor    Coefficient  t-stat      p-value
+ Constant     459.46       7.7078      0.19873E-13
+ Mean of INTP = 459.463
+ ----------------------------
+Node 3: Terminal node
+ Coefficients of least squares regression functions:
+ Regressor    Coefficient  t-stat      p-value
+ Constant     71208.       6.6519      0.33564E-09
+ Mean of INTP = 71207.9
+ ----------------------------
+  
+ Proportion of variance (R-squared) explained by tree model: 0.1995
+ 
+ Observed and fitted values are stored in regression.fit
+ LaTeX code for tree is in regression.tex
+ Split and fit variable names are stored in regression.var
+ Elapsed time in seconds: 646.38

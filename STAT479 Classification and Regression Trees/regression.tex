@@ -1,0 +1,31 @@
+ \documentclass[12pt]{article}
+ %File creation date: 10/31/19  at 18:58
+ \usepackage{pstricks,pst-node,pst-tree}
+ \usepackage{geometry}
+ \usepackage{lscape}
+ \definecolor{wheat}{rgb}{0.96, 0.87, 0.7}
+ \pagestyle{empty}
+ \begin{document}
+ %\begin{landscape}
+ \begin{center}
+\psset{linecolor=black,tnsep=1pt,tndepth=0cm,tnheight=0cm,treesep=.8cm,levelsep=50pt,radius=10pt}
+  \pstree[treemode=D]{\TC~[tnpos=l]{\shortstack[r]{\texttt{\detokenize{PINCP}}\\$\leq_*$289500}}
+ }{
+    \TC[fillcolor=yellow,fillstyle=solid]~{\shortstack[c]{\emph{20057}\\459.5}}
+    \TC[fillcolor=yellow,fillstyle=solid]~{\shortstack[c]{\emph{181}\\71208.}}
+ }
+ \end{center}
+GUIDE v.32.0  0.20-SE
+piecewise constant least-squares regression tree
+for predicting \texttt{\detokenize{INTP}}.
+ Number of observations used to contruct tree is 20238
+ (excluding observations with non-positive weight or with missing values
+ in d, t, r or z variables).
+ Maximum number of split levels is 30 and minimum node sample size is 101.
+At each split, an observation goes to the left branch 
+ if and only if the condition is satisfied.
+ The symbol `$\leq_*$' stands for `$\leq$ or missing'.
+Sample size (\emph{in italics}) and mean of \texttt{\detokenize{INTP}} printed below nodes.
+Second best split variable at root node is \texttt{\detokenize{POVPIP}}.
+ %\end{landscape}
+ \end{document}
