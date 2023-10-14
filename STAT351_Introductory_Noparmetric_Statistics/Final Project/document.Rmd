@@ -1,0 +1,155 @@
+---
+title: "Yuanyou Yao 351final"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+1.
+1.Since there are 6 types of birds, we choose to use Kruskal-Wallis test to see whether 6 sample medians are the same or not
+
+H0:M1=M2=M3=M4=M5=M6(the length of eggs are related to the host birds) v.s. H1: at least two medians are different
+```{r}
+data1=read.csv("cuckoo.csv",na.strings = "*")
+kruskal.test(data1)
+```
+
+We can see the p-value<0.05. So we reject the null. The length of eggs are related to the host birds
+
+2.
+```{r}
+set.seed(351)
+l=rbinom(100,size=1,prob=0.5)
+x=rnorm(100,2,1/4)
+x[l==0]=x[l==0]-4
+hist(x)
+mean(x)
+median(x)
+var(x)
+```
+
+Estimations of E(X),median(X) and var(X) are 0.323, 1.75, 4.02 respectively.
+
+
+3.
+We choose two different types of kernel each for x1,x2 and x3 to compare the result.
+
+```{r}
+data2=read.table("ozone.data.txt",header = T)
+library(np)
+y=data2$ozone
+x1=data2$radiation
+x2=data2$temperature
+x3=data2$wind
+h11=npregbw(y~x1,ckertype="gaussian",regtype="lc",bwmethod="cv.ls")
+model11= npreg(bws = h11, gradients = T)
+plot(h11,ylim=c(0,200),main="gaussian kernel")
+points(x1, y, cex=1, col="blue")
+h12=npregbw(y~x1,ckertype="epanechnikov",regtype="lc",bwmethod="cv.ls")
+model12 <- npreg(bws = h12, gradients = TRUE)
+plot(h12,ylim=c(0,200),main="Epanechnikov Kernel ")
+points(x1, y, cex=1, col="blue")
+h21=npregbw(y~x2,ckertype="gaussian",regtype="lc",bwmethod="cv.ls")
+model21= npreg(bws = h21, gradients = T)
+plot(h21,ylim=c(0,200),main="gaussian kernel")
+points(x2, y, cex=1, col="red")
+h22=npregbw(y~x2,ckertype="epanechnikov",regtype="lc",bwmethod="cv.ls")
+model22 <- npreg(bws = h22, gradients = TRUE)
+plot(h22,ylim=c(0,200),main="Epanechnikov Kernel ")
+points(x2, y, cex=1, col="red")
+h31=npregbw(y~x3,ckertype="gaussian",regtype="lc",bwmethod="cv.ls")
+model31= npreg(bws = h31, gradients = T)
+plot(h31,ylim=c(0,200),main="gaussian kernel")
+points(x3, y, cex=1, col="blue")
+h32=npregbw(y~x3,ckertype="epanechnikov",regtype="lc",bwmethod="cv.ls")
+model32 <- npreg(bws = h32, gradients = TRUE)
+plot(h32,ylim=c(0,200),main="Epanechnikov Kernel ")
+points(x3, y, cex=1, col="blue")
+```
+
+We can see from the plot that the plot of two types of kernel are very similar.
+
+Besides, when radiation increases and is in (0,200), ozone concentration also increases. When radiation is greater than 200 and increases, ozone concentration decreases.
+
+When temperature is less than 90 and increases, the ozone concentration also increases. When temperature is greater than 90 and increases, the ozone concentration starts to decrease.
+
+When wind speed increase, the ozone concentration increases.
+
+
+4.
+(a).
+```{r}
+set.seed(1)
+x1=runif(100)
+x2=rchisq(100,df=1)
+x3=rnorm(100)
+x4=rbinom(100,5,0.9)
+r1=rank(x1)
+r2=rank(x2)
+r3=rank(x3)
+r4=rank(x4)
+cor.test(x1,r1)
+cor.test(x2,r2)
+cor.test(x3,r3)
+cor.test(x4,r4)
+```
+
+We can see from the output that the sample correlation coefficient is 0.9974,0.7900,0.9714,0.9613 for the three distributions respectively.
+
+(b).
+```{r}
+
+cor.test(x1[-100],r1[-1])
+cor.test(x2[-100],r2[-1])
+cor.test(x3[-100],r3[-1])
+cor.test(x4[-100],r4[-1])
+```
+
+(c).
+```{r}
+cor.test(x1[-1],r1[-100])
+cor.test(x2[-1],r2[-100])
+cor.test(x3[-1],r3[-100])
+cor.test(x4[-1],r4[-100])
+```
+
+Results: 
+
+(a). the sample correlation coefficients are very high, meaning they are highly correlated. So ranks contain much information about the original data.
+
+(b) and (c). the absolute values of sample correlation coefficients are all less than 0.1,meaning that there are almost no correlation. Since the Xi are independent of Xi+1 , This result makes sense.
+
+
+5.
+```{r}
+x=c(1,2,3,4)
+y=c(0,2,-1,4)
+
+xnew=seq(1,4,by=0.01)
+
+par(mfrow=c(1,1))
+model1=smooth.spline(x,y,lambda=0)
+plot(x,y,col="red",main="lambda=0",ylim=c(-10,20))
+ynew=predict(model1,xnew)$y
+lines(xnew,ynew,col="blue")
+
+model2=smooth.spline(x,y,lambda=4)
+plot(x,y,col="red",main="lambda=1")
+ynew=predict(model2,xnew)$y
+lines(xnew,ynew,col="blue")
+
+model3=smooth.spline(x,y,lambda=8)
+plot(x,y,col="red",main="lambda=2")
+ynew=predict(model3,xnew)$y
+lines(xnew,ynew,col="blue")
+
+model4=smooth.spline(x,y,lambda=4000)
+plot(x,y,col="red",main="lambda=1000")
+ynew=predict(model4,xnew)$y
+lines(xnew,ynew,col="blue")
