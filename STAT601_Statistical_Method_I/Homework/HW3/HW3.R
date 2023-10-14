@@ -1,0 +1,7 @@
+bats = read.csv( file = "bats.csv" , header = T) 
+bats = transform(bats , lenergy = log(Energy)) 
+bats = transform(bats , lmass = log(Mass)) 
+lm1 = lm(lenergy ~ lmass , data = bats) 
+lm2 = lm(lenergy ~ lmass + Type, data = bats) 
+lm3 = lm(lenergy ~ Type*lmass , data = bats)
+anova(lm1,lm2,lm3) 
