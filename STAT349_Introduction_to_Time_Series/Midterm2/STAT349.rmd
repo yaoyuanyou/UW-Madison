@@ -1,0 +1,644 @@
+---
+title: "STAT349 based on log10"
+author: "Yuanyou Yao"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+#### AAL, 2015-03-23 to 2020-03-20
+##Model 1: ARIMA(3,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+
+##Model 2: ARIMA(2,1,3)
+```{r}
+c1=a[1:which(a[,7]==a[row.names(a)=='2016-01-04',7]),]
+c2=a[(which(a[,7]==a[row.names(a)=='2016-01-04',7])+1):which(a[,7]==a[row.names(a)=='2016-07-01',7]),]
+c3=a[(which(a[,7]==a[row.names(a)=='2016-07-01',7])+1):which(a[,7]==a[row.names(a)=='2018-03-01',7]),]
+c4=a[(which(a[,7]==a[row.names(a)=='2018-03-01',7])+1):which(a[,7]==a[row.names(a)=='2019-01-02',7]),]
+c5=a[(which(a[,7]==a[row.names(a)=='2019-01-02',7])+1):nrow(a),]
+arima(newdata(c3),order = auto.selection(newdata(c3),testdata(c3),totalobs(c3))[1:3])
+```
+I split the data in to 5 subsets, which are
+```{r}
+c('2015-03-24','2016-01-04')
+c('2016-01-04','2016-07-01')
+c('2016-01-04','2018-03-01')
+c('2018-03-01','2019-01-02')
+c('2019-01-02','2020-03-20')
+```
+and I use the third 2016-01-04 to 2018-03-01 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c3)
+predict(arima(newdata(c3),order=auto.selection(newdata(c3),testdata(c3),totalobs(c3))[1:3]),n.ahead=5)$pred
+testdata(c3)-predict(arima(newdata(c3),order=auto.selection(newdata(c3),testdata(c3),totalobs(c3))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c3),testdata(c3),totalobs(c3))[4]
+```
+
+##Model 3 ARIMA(3,1,0)
+I split the data in to 5 subsets, which are
+```{r}
+c('2015-03-24','2015-06-09')
+c('2015-06-09','2016-04-21')
+c('2016-04-21','2016-07-11')
+c('2016-07-11','2018-03-19')
+c('2018-03-19','2020-03-20')
+c1.3=a.original[1:which(a[,7]==a[row.names(a)=='2015-06-09',7]),]
+c2.3=a.original[(which(a[,7]==a[row.names(a)=='2015-06-09',7])+1):which(a[,7]==a[row.names(a)=='2016-04-21',7]),]
+c3.3=a.original[(which(a[,7]==a[row.names(a)=='2016-04-21',7])+1):which(a[,7]==a[row.names(a)=='2016-07-11',7]),]
+c4.3=a.original[(which(a[,7]==a[row.names(a)=='2016-07-11',7])+1):which(a[,7]==a[row.names(a)=='2018-03-19',7]),]
+c5.3=a.original[(which(a[,7]==a[row.names(a)=='2018-03-19',7])+1):nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('x^2','x^3','log(x)','x','x')
+c.new=rbind(c1.3,c2.3,c3.3,c4.3,c5.3)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
+
+
+
+#### BBY, 1999-06-29 to 2020-03-20
+##Model 1: ARIMA(3,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce1.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+##Model 2: ARIMA(3,1,3)
+```{r}
+c1=a[1:which(a[,7]==a[row.names(a)=="2003-06-23",7]),]
+c2=a[(which(a[,7]==a[row.names(a)=="2003-06-23",7])+1):which(a[,7]==a[row.names(a)=="2007-06-13",7]),]
+c3=a[(which(a[,7]==a[row.names(a)=="2007-06-13",7])+1):which(a[,7]==a[row.names(a)=="2012-03-16",7]),]
+c5=a[(which(a[,7]==a[row.names(a)=="2012-03-16",7])+1):nrow(a),]
+arima(newdata(c2),order = auto.selection(newdata(c2),testdata(c2),totalobs(c2))[1:3])
+```
+I split the data in to 4 subsets, which are
+```{r}
+c('1999-06-29','2003-06-23')
+c('2003-06-23','2007-06-13')
+c('2007-06-13','2012-03-16')
+c('2012-03-16','2020-03-20')
+```
+and I use the second 2003-06-23 to 2007-06-13 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c2)
+predict(arima(newdata(c2),order=auto.selection(newdata(c2),testdata(c2),totalobs(c2))[1:3]),n.ahead=5)$pred
+testdata(c2)-predict(arima(newdata(c2),order=auto.selection(newdata(c2),testdata(c2),totalobs(c2))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c2),testdata(c2),totalobs(c2))[4]
+```
+##Model 3 ARIMA(3,1,0)
+I split the data in to 2 subsets, which are
+```{r}
+c('1999-06-29','2008-08-19')
+c('2008-08-19','2020-03-20')
+c1.3=a.original[1:which(a[,7]==a[row.names(a)=='2008-08-19',7]),]
+c5.3=a.original[(which(a[,7]==a[row.names(a)=='2008-08-19',7])+1):nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('x','x')
+c.new=rbind(c1.3,c5.3)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
+#### BIIB, 2003-11-13 to 2020-03-20
+##Model 1: ARIMA(1,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce2.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+##Model 2: ARIMA(0,1,0)
+```{r}
+c1=a[1:which(a[,7]==a[row.names(a)=="2008-08-21",7]),]
+c2=a[(which(a[,7]==a[row.names(a)=="2008-08-21",7])+1):which(a[,7]==a[row.names(a)=="2009-06-09",7]),]
+c3=a[(which(a[,7]==a[row.names(a)=="2009-06-09",7])+1):which(a[,7]==a[row.names(a)=="2011-06-02",7]),]
+c4=a[(which(a[,7]==a[row.names(a)=="2011-06-02",7])+1):which(a[,7]==a[row.names(a)=="2011-10-24",7]),]
+c5=a[(which(a[,7]==a[row.names(a)=="2011-10-24",7])+1):nrow(a),]
+arima(newdata(c1),order = auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3])
+```
+I split the data in to 5 subsets, which are
+```{r}
+c('2003-11-13','2008-08-21')
+c('2008-08-21','2009-06-09')
+c('2009-06-09','2011-06-02')
+c('2011-06-02','2011-10-24')
+c('2011-10-24','2020-03-20')
+```
+and I use the first 2003-11-13 to 2008-08-21 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c1)
+predict(arima(newdata(c1),order=auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3]),n.ahead=5)$pred
+testdata(c1)-predict(arima(newdata(c1),order=auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c1),testdata(c1),totalobs(c1))[4]
+```
+##Model 3 ARIMA(1,1,0)
+I split the data in to 5 subsets, which are
+```{r}
+c('2003-11-13','2005-01-25')
+c('2005-01-25','2007-11-05')
+c('2007-11-05','2009-03-27')
+c('2009-03-27','2016-03-10')
+c('2016-03-10','2020-03-20')
+c1.3=a.original[1:which(a[,7]==a[row.names(a)=='2005-01-25',7]),]
+c2.3=a.original[(which(a[,7]==a[row.names(a)=='2005-01-25',7])+1):which(a[,7]==a[row.names(a)=='2007-11-05',7]),]
+c3.3=a.original[(which(a[,7]==a[row.names(a)=='2007-11-05',7])+1):which(a[,7]==a[row.names(a)=='2009-03-27',7]),]
+c4.3=a.original[(which(a[,7]==a[row.names(a)=='2009-03-27',7])+1):which(a[,7]==a[row.names(a)=='2016-03-10',7]),]
+c5.3=a.original[(which(a[,7]==a[row.names(a)=='2016-03-10',7])+1):nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('x','log(x)','x','x','x')
+c.new=rbind(c1.3,log(c2.3[,4]),c3.3,c4.3,c5.3)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
+#### BSX, 1995-02-24 to 2020-03-20
+##Model 1: ARIMA(1,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce3.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+##Model 2: ARIMA(2,1,3)
+```{r}
+c1=a[1:500,]
+c2=a[501:which(a[,7]==a[row.names(a)=="2002-09-11",7]),]
+c3=a[(which(a[,7]==a[row.names(a)=="2002-09-11",7])+1):which(a[,7]==a[row.names(a)=="2008-06-16",7]),]
+c4=a[(which(a[,7]==a[row.names(a)=="2008-06-16",7])+1):4300,]
+c5=a[4301:nrow(a),]
+arima(newdata(c4),order = auto.selection(newdata(c4),testdata(c4),totalobs(c4))[1:3])
+```
+I split the data in to 5 subsets, which are
+```{r}
+c('1995-02-24','1997-02-14')
+c('1997-02-14','2002-09-11')
+c('2002-09-11','2008-06-16')
+c('2008-06-16','2012-03-22')
+c('2012-03-22','2020-03-20')
+```
+and I use the fourth 2008-06-16 to 2012-03-22 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c4)
+predict(arima(newdata(c4),order=auto.selection(newdata(c4),testdata(c4),totalobs(c4))[1:3]),n.ahead=5)$pred
+testdata(c4)-predict(arima(newdata(c4),order=auto.selection(newdata(c4),testdata(c4),totalobs(c4))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c4),testdata(c4),totalobs(c4))[4]
+```
+##Model 3 ARIMA(1,1,0)
+I split the data in to 5 subsets, which are
+```{r}
+c('1995-02-24','1999-02-10')
+c('1999-02-10','2000-11-20')
+c('2000-11-20','2004-04-14')
+c('2004-04-14','2012-08-14')
+c('2012-08-14','2020-03-20')
+c1.3=a.original[1:which(a[,7]==a[row.names(a)=='1999-02-10',7]),]
+c2.3=a.original[(which(a[,7]==a[row.names(a)=='1999-02-10',7])+1):1450,]
+c3.3=a.original[1451:which(a[,7]==a[row.names(a)=='2004-04-14',7]),]
+c4.3=a.original[(which(a[,7]==a[row.names(a)=='2004-04-14',7])+1):which(a[,7]==a[row.names(a)=='2012-08-14',7]),]
+c5.3=a.original[(which(a[,7]==a[row.names(a)=='2012-08-14',7])+1):nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('x','log(x)','x','x','x')
+c.new=rbind(c1.3,log(c2.3[,4]),c3.3,c4.3,c5.3)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
+#### BXP, 2006-04-03 to 2020-03-20
+##Model 1: ARIMA(2,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce4.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+##Model 2: ARIMA(2,0,3)
+```{r}
+c1=a[1:which(a[,7]==a[row.names(a)=="2007-11-02",7]),]
+c2=a[(which(a[,7]==a[row.names(a)=="2007-11-02",7])+1):which(a[,7]==a[row.names(a)=="2011-10-21",7]),]
+c5=a[(which(a[,7]==a[row.names(a)=="2011-10-21",7])+1):nrow(a),]
+arima(newdata(c1),order = auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3])
+```
+I split the data in to 3 subsets, which are
+```{r}
+c('2006-04-03','2007-11-02')
+c('2007-11-02','2011-10-21')
+c('2011-10-21','2020-03-20')
+```
+and I use the first 2006-04-03 to 2007-11-02 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c1)
+predict(arima(newdata(c1),order=auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3]),n.ahead=5)$pred
+testdata(c1)-predict(arima(newdata(c1),order=auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c1),testdata(c1),totalobs(c1))[4]
+```
+##Model 3 ARIMA(0,1,0)
+I split the data in to 4 subsets, which are
+```{r}
+c('2006-04-03','2008-03-31')
+c('2008-03-31','2009-03-05')
+c('2009-03-05','2011-10-21')
+c('2011-10-21','2020-03-20')
+c1.3=a.original[1:which(a[,7]==a[row.names(a)=='2008-03-31',7]),]
+c2.3=a.original[(which(a[,7]==a[row.names(a)=='2008-03-31',7])+1):which(a[,7]==a[row.names(a)=='2009-03-05',7]),]
+c3.3=a.original[(which(a[,7]==a[row.names(a)=='2009-03-05',7])+1):which(a[,7]==a[row.names(a)=='2011-10-21',7]),]
+c5.3=a.original[(which(a[,7]==a[row.names(a)=='2011-10-21',7])+1):nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('x','x','x','x^2')
+c.new=rbind(c1.3,c2.3,c3.3,c5.3[,4]^2)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
+#### COG, 2008-06-23 to 2020-03-20
+##Model 1: ARIMA(3,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce5.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+##Model 2: ARIMA(1,1,0)
+```{r}
+c1=a[1:which(a[,7]==a[row.names(a)=="2009-05-29",7]),]
+c2=a[(which(a[,7]==a[row.names(a)=="2009-05-29",7])+1):which(a[,7]==a[row.names(a)=="2012-06-11",7]),]
+c5=a[(which(a[,7]==a[row.names(a)=="2012-06-11",7])+1):nrow(a),]
+arima(newdata(c2),order = auto.selection(newdata(c2),testdata(c2),totalobs(c2))[1:3])
+```
+I split the data in to 3 subsets, which are
+```{r}
+c('2008-06-23','2009-05-29')
+c('2009-05-29','2012-06-11')
+c('2012-06-11','2020-03-20')
+```
+and I use the second 2009-05-29 to 2012-06-110 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c2)
+predict(arima(newdata(c2),order=auto.selection(newdata(c2),testdata(c2),totalobs(c2))[1:3]),n.ahead=5)$pred
+testdata(c2)-predict(arima(newdata(c2),order=auto.selection(newdata(c2),testdata(c2),totalobs(c2))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c2),testdata(c2),totalobs(c2))[4]
+```
+##Model 3 ARIMA(1,1,0)
+I split the data in to 4 subsets, which are
+```{r}
+c('2008-06-23','2010-09-27')
+c('2010-09-27','2016-06-02')
+c('2016-06-02','2017-10-20')
+c('2017-10-20','2020-03-20')
+c1.3=a.original[1:which(a[,7]==a[row.names(a)=='2010-09-27',7]),]
+c2.3=a.original[(which(a[,7]==a[row.names(a)=='2010-09-27',7])+1):which(a[,7]==a[row.names(a)=='2016-06-02',7]),]
+c3.3=a.original[(which(a[,7]==a[row.names(a)=='2016-06-02',7])+1):which(a[,7]==a[row.names(a)=='2017-10-20',7]),]
+c5.3=a.original[(which(a[,7]==a[row.names(a)=='2017-10-20',7])+1):nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('x','log(x)','x','x')
+c.new=rbind(c1.3,log(c2.3[,4]),c3.3,c5.3)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
+#### GS, 2002-07-22 to 2020-03-20
+##Model 1: ARIMA(3,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce6.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+##Model 2: ARIMA(1,0,2)
+```{r}
+c1=a[1:which(a[,7]==a[row.names(a)=="2003-05-07",7]),]
+c2=a[(which(a[,7]==a[row.names(a)=="2003-05-07",7])+1):which(a[,7]==a[row.names(a)=="2008-02-12",7]),]
+c3=a[(which(a[,7]==a[row.names(a)=="2008-02-12",7])+1):which(a[,7]==a[row.names(a)=="2011-12-22",7]),]
+c5=a[(which(a[,7]==a[row.names(a)=="2011-12-22",7])+1):nrow(a),]
+arima(newdata(c2),order = auto.selection(newdata(c2),testdata(c2),totalobs(c2))[1:3])
+```
+I split the data in to 4 subsets, which are
+```{r}
+c('2002-07-22','2003-05-07')
+c('2003-05-07','2008-02-12')
+c('2008-02-12','2011-12-22')
+c('2011-12-22','2020-03-20')
+```
+and I use the second 2003-05-07 to 2008-02-12 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c2)
+predict(arima(newdata(c2),order=auto.selection(newdata(c2),testdata(c2),totalobs(c2))[1:3]),n.ahead=5)$pred
+testdata(c2)-predict(arima(newdata(c2),order=auto.selection(newdata(c2),testdata(c2),totalobs(c2))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c2),testdata(c2),totalobs(c2))[4]
+```
+##Model 3 ARIMA(3,1,0)
+I split the data in to 4 subsets, which are
+```{r}
+c('2002-07-22','2004-12-07')
+c('2004-12-07','2008-11-25')
+c('2008-11-25','2017-11-02')
+c('2017-11-02','2020-03-20')
+c1.3=a.original[1:which(a[,7]==a[row.names(a)=='2004-12-07',7]),]
+c2.3=a.original[(which(a[,7]==a[row.names(a)=='2004-12-07',7])+1):which(a[,7]==a[row.names(a)=='2008-11-25',7]),]
+c3.3=a.original[(which(a[,7]==a[row.names(a)=='2008-11-25',7])+1):which(a[,7]==a[row.names(a)=='2017-11-02',7]),]
+c5.3=a.original[(which(a[,7]==a[row.names(a)=='2017-11-02',7])+1):nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('x','x','x','x')
+c.new=rbind(c1.3,c2.3,c3.3,c5.3)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
+#### INTC, 1986-08-28 to 2020-03-20
+##Model 1: ARIMA(1,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce7.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+##Model 2: ARIMA(3,1,3)
+```{r}
+c1=a[1:400,]
+c2=a[401:2800,]
+c3=a[2801:4000,]
+c4=a[4001:5200,]
+c6=a[5201:6000,]
+c5=a[6001:nrow(a),]
+arima(newdata(c4),order = auto.selection(newdata(c4),testdata(c4),totalobs(c4))[1:3])
+```
+I split the data in to 6 subsets, which are
+```{r}
+c('1986-08-28','1989-01-12')
+c('1989-01-12','1997-09-24')
+c('1997-09-24','2002-07-05')
+c('2002-07-05','2007-04-12')
+c('2007-04-12','2011-11-01')
+c('2011-11-01','2020-03-20')
+```
+and I use the fourth 2002-07-05 to 2007-04-12 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c4)
+predict(arima(newdata(c4),order=auto.selection(newdata(c4),testdata(c4),totalobs(c4))[1:3]),n.ahead=5)$pred
+testdata(c4)-predict(arima(newdata(c4),order=auto.selection(newdata(c4),testdata(c4),totalobs(c4))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c4),testdata(c4),totalobs(c4))[4]
+```
+##Model 3 ARIMA(1,1,0)
+I split the data in to 4 subsets, which are
+```{r}
+c('1986-08-28','2002-07-05')
+c('2002-07-05','2010-06-15')
+c('2010-06-15','2016-10-20')
+c('2016-10-20','2020-03-20')
+c1.3=a.original[1:4000,]
+c2.3=a.original[4001:6000,]
+c3.3=a.original[6001:7600,]
+c5.3=a.original[7601:nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('log(x)','log(x)','x','x')
+c.new=rbind(log(c1.3[,4]),log(c2.3[,4]),c3.3,c5.3)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
+#### NEE, 1980-01-02 to 2020-03-20
+##Model 1: ARIMA(1,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce8.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+##Model 2: ARIMA(0,1,2)
+```{r}
+c1=a[1:4700,]
+c2=a[4701:8000,]
+c5=a[8001:nrow(a),]
+arima(newdata(c1),order = auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3])
+```
+I split the data in to 3 subsets, which are
+```{r}
+c('1980-01-02','1998-08-06')
+c('1998-08-06','2011-09-15')
+c('2011-09-15','2020-03-20')
+```
+and I use the first 1980-01-02 to 1998-08-06 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c1)
+predict(arima(newdata(c1),order=auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3]),n.ahead=5)$pred
+testdata(c1)-predict(arima(newdata(c1),order=auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c1),testdata(c1),totalobs(c1))[4]
+```
+##Model 3 ARIMA(1,1,0)
+I split the data in to 3 subsets, which are
+```{r}
+c('1980-01-02','2006-02-24')
+c('2006-02-24','2008-12-04')
+c('2008-12-04','2020-03-20')
+c1.3=a.original[1:6600,]
+c2.3=a.original[6601:7300,]
+c5.3=a.original[7301:nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('x','x','x')
+c.new=rbind(c1.3,c2.3,c5.3)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
+#### TXN, 1980-01-02 to 2020-03-20
+##Model 1: ARIMA(1,1,0)
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+source('dev1ce9.r')
+arima(newdata(a),order = auto.selection(newdata(a),testdata(a),totalobs(a))[1:3])
+```
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(a)
+predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+testdata(a)-predict(arima(newdata(a),order=auto.selection(newdata(a),testdata(a),totalobs(a))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(a),testdata(a),totalobs(a))[4]
+```
+##Model 2: ARIMA(1,1,0)
+```{r}
+c1=a[1:4000,]
+c2=a[4001:7300,]
+c5=a[7301:nrow(a),]
+arima(newdata(c1),order = auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3])
+```
+I split the data in to 3 subsets, which are
+```{r}
+c('1980-01-02','1995-10-26')
+c('1995-10-26','2008-12-04')
+c('2008-12-04','2020-03-20')
+```
+and I use the first 1980-01-02 to 1995-10-26 to build the model.
+
+the last 5 days actual value, forecast value, forecast errors and mean squared forecast error
+```{r}
+testdata(c1)
+predict(arima(newdata(c1),order=auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3]),n.ahead=5)$pred
+testdata(c1)-predict(arima(newdata(c1),order=auto.selection(newdata(c1),testdata(c1),totalobs(c1))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c1),testdata(c1),totalobs(c1))[4]
+```
+##Model 3 ARIMA(0,0,0)
+I split the data in to 4 subsets, which are
+```{r}
+c('1980-01-02','1995-10-26')
+c('1995-10-26','2000-05-17')
+c('2000-05-17','2003-03-05')
+c('2003-03-05','2020-03-20')
+c1.3=a.original[1:4000,]
+c2.3=a.original[4001:5150,]
+c3.3=a.original[5151:5850,]
+c5.3=a.original[5851:nrow(a.original),]
+```
+the transformations are obtain by Box-Cox and the last 5 days actual value, forecast value, forecast errors and mean squared forecast error are
+```{r}
+c('x','log(x)','log(x)','x')
+c.new=rbind(c1.3,log(c2.3[,4]),log(c3.3[,4]),c5.3)
+c.new[-1,7]=-diff(log10(c.new[,4]))
+c.new=c.new[-1,]
+arima(newdata(c.new),order = auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3])
+testdata(c.new)
+predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+testdata(c.new)-predict(arima(newdata(c.new),order=auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[1:3]),n.ahead=5)$pred
+auto.selection(newdata(c.new),testdata(c.new),totalobs(c.new))[4]
+```
