@@ -39,7 +39,8 @@ We conbine 4 files into continuous, sequential data from July 2014 to June 2018.
 
 It is worth mentioning that a snowstorm attacked NYC in January 2015, leading a high violation rate.
 
-A **ARIMA** model is applied for this timeseries data and is check using **ACF**. After carefully parameters selection, a prediction is made and shown below:
+An **ARIMA** model is applied for this timeseries data and is check using **ACF**. After carefully parameters selection, a prediction is made and shown below:
+
 ![ARIMA Model Evaluation](https://github.com/yaoyuanyou/UW-Madison/blob/92c0da8cf6571172043461c06d3ec64e3af3b119/STAT605_Data_Science_Computing_Project/Project/img/ARIMA-eval.png)
 
 ![ARIMA Model Prediction](https://github.com/yaoyuanyou/UW-Madison/blob/92c0da8cf6571172043461c06d3ec64e3af3b119/STAT605_Data_Science_Computing_Project/Project/img/ARIMA-pred.png)
@@ -48,6 +49,7 @@ A **ARIMA** model is applied for this timeseries data and is check using **ACF**
 4. Vehicle Types & Violation Codes
 
 We confirm vehicle types and violation types are related. By conducting **Chi-squared test**. We also examine the top 5 vehicle body types with the most violations.
+
 ![Top Violation According to Body Type](https://github.com/yaoyuanyou/UW-Madison/blob/92c0da8cf6571172043461c06d3ec64e3af3b119/STAT605_Data_Science_Computing_Project/Project/img/vehicle-type.png)
 
 Given different body types, we check the violation types and visualize as below:
